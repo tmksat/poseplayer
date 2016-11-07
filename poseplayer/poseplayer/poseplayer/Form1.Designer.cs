@@ -92,6 +92,10 @@
             this.groupBox_Parameter = new System.Windows.Forms.GroupBox();
             this.serialPort_Motor = new System.IO.Ports.SerialPort(this.components);
             this.timer_ViewUpdate = new System.Windows.Forms.Timer(this.components);
+            this.radioButton_Param = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button_WriteAllAxis = new System.Windows.Forms.Button();
+            this.numericUpDown_Speed = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.groupBox_Control.SuspendLayout();
             this.groupBox_ComPort.SuspendLayout();
@@ -103,6 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J1)).BeginInit();
             this.groupBox_Pose.SuspendLayout();
+            this.groupBox_Parameter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -126,32 +132,32 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(40, 22);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(42, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // vIewToolStripMenuItem
             // 
             this.vIewToolStripMenuItem.Name = "vIewToolStripMenuItem";
-            this.vIewToolStripMenuItem.Size = new System.Drawing.Size(48, 22);
+            this.vIewToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.vIewToolStripMenuItem.Text = "View";
             // 
             // toolToolStripMenuItem
             // 
             this.toolToolStripMenuItem.Name = "toolToolStripMenuItem";
-            this.toolToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
+            this.toolToolStripMenuItem.Size = new System.Drawing.Size(41, 22);
             this.toolToolStripMenuItem.Text = "Tool";
             // 
             // helpToolStripMenuItem
@@ -159,18 +165,19 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.posePlayerTomokiSatoToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(46, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // posePlayerTomokiSatoToolStripMenuItem
             // 
             this.posePlayerTomokiSatoToolStripMenuItem.Name = "posePlayerTomokiSatoToolStripMenuItem";
-            this.posePlayerTomokiSatoToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
+            this.posePlayerTomokiSatoToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.posePlayerTomokiSatoToolStripMenuItem.Text = "PosePlayer 1.0.0 by tomoki sato";
             this.posePlayerTomokiSatoToolStripMenuItem.Click += new System.EventHandler(this.posePlayerTomokiSatoToolStripMenuItem_Click);
             // 
             // groupBox_Control
             // 
+            this.groupBox_Control.Controls.Add(this.radioButton_Param);
             this.groupBox_Control.Controls.Add(this.label5);
             this.groupBox_Control.Controls.Add(this.textBox_UdpPort);
             this.groupBox_Control.Controls.Add(this.label4);
@@ -190,7 +197,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(518, 20);
+            this.label5.Location = new System.Drawing.Point(593, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(25, 12);
             this.label5.TabIndex = 35;
@@ -198,7 +205,7 @@
             // 
             // textBox_UdpPort
             // 
-            this.textBox_UdpPort.Location = new System.Drawing.Point(549, 17);
+            this.textBox_UdpPort.Location = new System.Drawing.Point(624, 17);
             this.textBox_UdpPort.Name = "textBox_UdpPort";
             this.textBox_UdpPort.Size = new System.Drawing.Size(79, 19);
             this.textBox_UdpPort.TabIndex = 34;
@@ -207,7 +214,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(329, 20);
+            this.label4.Location = new System.Drawing.Point(404, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 12);
             this.label4.TabIndex = 33;
@@ -215,7 +222,7 @@
             // 
             // textBox_IpAdr
             // 
-            this.textBox_IpAdr.Location = new System.Drawing.Point(367, 17);
+            this.textBox_IpAdr.Location = new System.Drawing.Point(442, 17);
             this.textBox_IpAdr.Name = "textBox_IpAdr";
             this.textBox_IpAdr.Size = new System.Drawing.Size(139, 19);
             this.textBox_IpAdr.TabIndex = 4;
@@ -224,7 +231,7 @@
             // radioButton_UdpBridge
             // 
             this.radioButton_UdpBridge.AutoSize = true;
-            this.radioButton_UdpBridge.Location = new System.Drawing.Point(135, 18);
+            this.radioButton_UdpBridge.Location = new System.Drawing.Point(202, 18);
             this.radioButton_UdpBridge.Name = "radioButton_UdpBridge";
             this.radioButton_UdpBridge.Size = new System.Drawing.Size(83, 16);
             this.radioButton_UdpBridge.TabIndex = 3;
@@ -233,7 +240,7 @@
             // 
             // button_ControlStart
             // 
-            this.button_ControlStart.Location = new System.Drawing.Point(224, 15);
+            this.button_ControlStart.Location = new System.Drawing.Point(306, 15);
             this.button_ControlStart.Name = "button_ControlStart";
             this.button_ControlStart.Size = new System.Drawing.Size(75, 23);
             this.button_ControlStart.TabIndex = 2;
@@ -348,7 +355,7 @@
             this.checkBox_J6.Name = "checkBox_J6";
             this.checkBox_J6.Size = new System.Drawing.Size(37, 16);
             this.checkBox_J6.TabIndex = 32;
-            this.checkBox_J6.Text = "J6";
+            this.checkBox_J6.Text = "J5";
             this.checkBox_J6.UseVisualStyleBackColor = true;
             // 
             // checkBox_J5
@@ -360,7 +367,7 @@
             this.checkBox_J5.Name = "checkBox_J5";
             this.checkBox_J5.Size = new System.Drawing.Size(37, 16);
             this.checkBox_J5.TabIndex = 31;
-            this.checkBox_J5.Text = "J5";
+            this.checkBox_J5.Text = "J4";
             this.checkBox_J5.UseVisualStyleBackColor = true;
             // 
             // checkBox_J4
@@ -372,7 +379,7 @@
             this.checkBox_J4.Name = "checkBox_J4";
             this.checkBox_J4.Size = new System.Drawing.Size(37, 16);
             this.checkBox_J4.TabIndex = 30;
-            this.checkBox_J4.Text = "J4";
+            this.checkBox_J4.Text = "J3";
             this.checkBox_J4.UseVisualStyleBackColor = true;
             // 
             // checkBox_J3
@@ -384,7 +391,7 @@
             this.checkBox_J3.Name = "checkBox_J3";
             this.checkBox_J3.Size = new System.Drawing.Size(37, 16);
             this.checkBox_J3.TabIndex = 29;
-            this.checkBox_J3.Text = "J3";
+            this.checkBox_J3.Text = "J2";
             this.checkBox_J3.UseVisualStyleBackColor = true;
             // 
             // checkBox_J2
@@ -396,7 +403,7 @@
             this.checkBox_J2.Name = "checkBox_J2";
             this.checkBox_J2.Size = new System.Drawing.Size(37, 16);
             this.checkBox_J2.TabIndex = 28;
-            this.checkBox_J2.Text = "J2";
+            this.checkBox_J2.Text = "J1";
             this.checkBox_J2.UseVisualStyleBackColor = true;
             // 
             // checkBox_J1
@@ -408,7 +415,7 @@
             this.checkBox_J1.Name = "checkBox_J1";
             this.checkBox_J1.Size = new System.Drawing.Size(37, 16);
             this.checkBox_J1.TabIndex = 27;
-            this.checkBox_J1.Text = "J1";
+            this.checkBox_J1.Text = "J0";
             this.checkBox_J1.UseVisualStyleBackColor = true;
             this.checkBox_J1.CheckedChanged += new System.EventHandler(this.checkBox_J1_CheckedChanged);
             // 
@@ -457,7 +464,7 @@
             // trackBar_J6
             // 
             this.trackBar_J6.Location = new System.Drawing.Point(65, 322);
-            this.trackBar_J6.Maximum = 12000;
+            this.trackBar_J6.Maximum = 11500;
             this.trackBar_J6.Minimum = 3500;
             this.trackBar_J6.Name = "trackBar_J6";
             this.trackBar_J6.Size = new System.Drawing.Size(149, 45);
@@ -481,7 +488,7 @@
             // trackBar_J5
             // 
             this.trackBar_J5.Location = new System.Drawing.Point(65, 268);
-            this.trackBar_J5.Maximum = 12000;
+            this.trackBar_J5.Maximum = 11500;
             this.trackBar_J5.Minimum = 3500;
             this.trackBar_J5.Name = "trackBar_J5";
             this.trackBar_J5.Size = new System.Drawing.Size(149, 45);
@@ -505,7 +512,7 @@
             // trackBar_J4
             // 
             this.trackBar_J4.Location = new System.Drawing.Point(65, 214);
-            this.trackBar_J4.Maximum = 12000;
+            this.trackBar_J4.Maximum = 11500;
             this.trackBar_J4.Minimum = 3500;
             this.trackBar_J4.Name = "trackBar_J4";
             this.trackBar_J4.Size = new System.Drawing.Size(149, 45);
@@ -529,7 +536,7 @@
             // trackBar_J3
             // 
             this.trackBar_J3.Location = new System.Drawing.Point(65, 164);
-            this.trackBar_J3.Maximum = 12000;
+            this.trackBar_J3.Maximum = 11500;
             this.trackBar_J3.Minimum = 3500;
             this.trackBar_J3.Name = "trackBar_J3";
             this.trackBar_J3.Size = new System.Drawing.Size(149, 45);
@@ -553,7 +560,7 @@
             // trackBar_J2
             // 
             this.trackBar_J2.Location = new System.Drawing.Point(65, 117);
-            this.trackBar_J2.Maximum = 12000;
+            this.trackBar_J2.Maximum = 11500;
             this.trackBar_J2.Minimum = 3500;
             this.trackBar_J2.Name = "trackBar_J2";
             this.trackBar_J2.Size = new System.Drawing.Size(149, 45);
@@ -577,7 +584,7 @@
             // trackBar_J1
             // 
             this.trackBar_J1.Location = new System.Drawing.Point(65, 67);
-            this.trackBar_J1.Maximum = 12000;
+            this.trackBar_J1.Maximum = 11500;
             this.trackBar_J1.Minimum = 3500;
             this.trackBar_J1.Name = "trackBar_J1";
             this.trackBar_J1.Size = new System.Drawing.Size(149, 45);
@@ -694,6 +701,9 @@
             // 
             // groupBox_Parameter
             // 
+            this.groupBox_Parameter.Controls.Add(this.numericUpDown_Speed);
+            this.groupBox_Parameter.Controls.Add(this.button_WriteAllAxis);
+            this.groupBox_Parameter.Controls.Add(this.label6);
             this.groupBox_Parameter.Location = new System.Drawing.Point(426, 79);
             this.groupBox_Parameter.Name = "groupBox_Parameter";
             this.groupBox_Parameter.Size = new System.Drawing.Size(263, 367);
@@ -704,6 +714,59 @@
             // timer_ViewUpdate
             // 
             this.timer_ViewUpdate.Tick += new System.EventHandler(this.timer_ViewUpdate_Tick);
+            // 
+            // radioButton_Param
+            // 
+            this.radioButton_Param.AutoSize = true;
+            this.radioButton_Param.Location = new System.Drawing.Point(135, 18);
+            this.radioButton_Param.Name = "radioButton_Param";
+            this.radioButton_Param.Size = new System.Drawing.Size(55, 16);
+            this.radioButton_Param.TabIndex = 36;
+            this.radioButton_Param.TabStop = true;
+            this.radioButton_Param.Text = "Param";
+            this.radioButton_Param.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 39);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 12);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Speed (1-127)";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // button_WriteAllAxis
+            // 
+            this.button_WriteAllAxis.Location = new System.Drawing.Point(27, 325);
+            this.button_WriteAllAxis.Name = "button_WriteAllAxis";
+            this.button_WriteAllAxis.Size = new System.Drawing.Size(207, 23);
+            this.button_WriteAllAxis.TabIndex = 35;
+            this.button_WriteAllAxis.Text = "Write all axis";
+            this.button_WriteAllAxis.UseVisualStyleBackColor = true;
+            this.button_WriteAllAxis.Click += new System.EventHandler(this.button_WriteAllAxis_Click);
+            // 
+            // numericUpDown_Speed
+            // 
+            this.numericUpDown_Speed.Location = new System.Drawing.Point(114, 37);
+            this.numericUpDown_Speed.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.numericUpDown_Speed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_Speed.Name = "numericUpDown_Speed";
+            this.numericUpDown_Speed.Size = new System.Drawing.Size(120, 19);
+            this.numericUpDown_Speed.TabIndex = 37;
+            this.numericUpDown_Speed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -738,6 +801,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J1)).EndInit();
             this.groupBox_Pose.ResumeLayout(false);
             this.groupBox_Pose.PerformLayout();
+            this.groupBox_Parameter.ResumeLayout(false);
+            this.groupBox_Parameter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -808,6 +874,10 @@
         private System.Windows.Forms.TextBox textBox_UdpPort;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox_IpAdr;
+        private System.Windows.Forms.RadioButton radioButton_Param;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button_WriteAllAxis;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Speed;
     }
 }
 

@@ -20,6 +20,9 @@ namespace poseplayer
         
         private ManualController manual_controller_ = null;
         private PoseController pose_controller_ = null;
+        //
+        private ParameterWriteController parameter_write_controller_ = null;
+        //
         private UdpBridgeController udp_bridge_controller_ = null;
         private object command_value_lock_ = new object();
 
@@ -138,6 +141,14 @@ namespace poseplayer
                             manual_controller_.Start();
                             //pose_controller_.Init();
                             pose_controller_.Start();
+                        }
+                        else if (radioButton_Param.Checked)
+                        {
+                            // parameter mode
+                            parameter_write_controller_ = new ParameterWriteController(serialPort_Motor);
+                            parameter_write_controller_.Init();
+                            parameter_write_controller_.Start();
+
                         }else if(radioButton_UdpBridge.Checked)
                         {
                             // UdpBridge Mode
@@ -169,11 +180,19 @@ namespace poseplayer
                         }
                         else { }
 
-                        if(udp_bridge_controller_ != null)
+                        if (udp_bridge_controller_ != null)
                         {
                             udp_bridge_controller_.Kill();
                             udp_bridge_controller_.Dispose();
                             udp_bridge_controller_ = null;
+                        }
+                        else { }
+
+                        if (parameter_write_controller_ != null)
+                        {
+                            parameter_write_controller_.Kill();
+                            parameter_write_controller_.Dispose();
+                            parameter_write_controller_ = null;
                         }
 
                         button_ControlStart.Text = "Start";
@@ -351,6 +370,26 @@ namespace poseplayer
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_WriteAllAxis_Click(object sender, EventArgs e)
+        {
+            if (parameter_write_controller_ != null)
+            {
+                int order_speed = (int)numericUpDown_Speed.Value;
+
+                foreach (Motor m in parameter_write_controller_.Motors)
+                {
+                    m.Speed = order_speed;
+                }
+
+                parameter_write_controller_.RunOnce();   // send command once
             }
         }
     }
