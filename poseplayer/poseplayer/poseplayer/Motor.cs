@@ -75,6 +75,48 @@ namespace poseplayer
             return ret;
         }
 
+        // set speed parameter
+        public int SerializeCurrentLimit(byte[] d)
+        {
+            int ret = 0;
+            // serialize process...
+
+            // cmd, id
+            if (id_ >= 0 && id_ <= 31)
+            {
+                d[(int)eCommandIndex.CMD] = (byte)(kKondoParameterWrite | id_);
+            }
+            else { }
+
+            d[(int)eParameterWriteIndex.SC] = kKondoSCCurLim;
+            d[(int)eParameterWriteIndex.PARAMETER_VALUE] = (byte)(clump(kParameterCurrentMinDefault, kParameterCurrentMaxDefault, currentlimit_));
+
+            ret = (int)eParameterWriteIndex.COMMAND_PACKET_LENGTH;
+
+            return ret;
+        }
+
+        // set speed parameter
+        public int SerializeTempLimit(byte[] d)
+        {
+            int ret = 0;
+            // serialize process...
+
+            // cmd, id
+            if (id_ >= 0 && id_ <= 31)
+            {
+                d[(int)eCommandIndex.CMD] = (byte)(kKondoParameterWrite | id_);
+            }
+            else { }
+
+            d[(int)eParameterWriteIndex.SC] = kKondoSCTmpLim;
+            d[(int)eParameterWriteIndex.PARAMETER_VALUE] = (byte)(clump(kParameterTempMinDefault, kParameterTempMaxDefault, templimit_));
+
+            ret = (int)eParameterWriteIndex.COMMAND_PACKET_LENGTH;
+
+            return ret;
+        }
+
 
         public void Free()
         {

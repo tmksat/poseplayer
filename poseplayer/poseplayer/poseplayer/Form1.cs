@@ -345,9 +345,6 @@ namespace poseplayer
                     pose1_list_[i] = manual_controller_.Motors[i].PositionFeedback;
                     label_Pose1.Text += pose1_list_[i].ToString() + ", ";
                 }
-
-                
-                
             }
             catch (Exception ex)
             {
@@ -365,7 +362,6 @@ namespace poseplayer
                     pose2_list_[i] = manual_controller_.Motors[i].PositionFeedback;
                     label_Pose2.Text += pose2_list_[i].ToString() + ", ";
                 }
-                
             }
             catch (Exception ex)
             {
@@ -383,14 +379,23 @@ namespace poseplayer
             if (parameter_write_controller_ != null)
             {
                 int order_speed = (int)numericUpDown_Speed.Value;
+                int order_curlimit = (int)numericUpDown_CurrentLimit.Value;
+                int order_templimit = (int)numericUpDown_TempLimit.Value;
 
                 foreach (Motor m in parameter_write_controller_.Motors)
                 {
                     m.Speed = order_speed;
+                    m.CurrentLimit = order_curlimit;
+                    m.TempLimit = order_templimit;
                 }
 
                 parameter_write_controller_.RunOnce();   // send command once
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

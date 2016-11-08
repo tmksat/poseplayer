@@ -38,6 +38,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.posePlayerTomokiSatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox_Control = new System.Windows.Forms.GroupBox();
+            this.radioButton_Param = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_UdpPort = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -82,20 +83,23 @@
             this.groupBox_Pose = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.textBox_MoveStepPls = new System.Windows.Forms.TextBox();
+            this.button_MovePose2 = new System.Windows.Forms.Button();
             this.button_MovePose1 = new System.Windows.Forms.Button();
             this.label_Pose2 = new System.Windows.Forms.Label();
             this.label_Pose1 = new System.Windows.Forms.Label();
             this.button_SetPose2 = new System.Windows.Forms.Button();
             this.button_SetPose1 = new System.Windows.Forms.Button();
             this.groupBox_Parameter = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_Speed = new System.Windows.Forms.NumericUpDown();
+            this.button_WriteAllAxis = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.serialPort_Motor = new System.IO.Ports.SerialPort(this.components);
             this.timer_ViewUpdate = new System.Windows.Forms.Timer(this.components);
-            this.radioButton_Param = new System.Windows.Forms.RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button_WriteAllAxis = new System.Windows.Forms.Button();
-            this.numericUpDown_Speed = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_CurrentLimit = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDown_TempLimit = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox_Control.SuspendLayout();
             this.groupBox_ComPort.SuspendLayout();
@@ -109,6 +113,8 @@
             this.groupBox_Pose.SuspendLayout();
             this.groupBox_Parameter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentLimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TempLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -138,7 +144,7 @@
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -193,6 +199,17 @@
             this.groupBox_Control.TabStop = false;
             this.groupBox_Control.Text = "Control Tyep";
             this.groupBox_Control.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // radioButton_Param
+            // 
+            this.radioButton_Param.AutoSize = true;
+            this.radioButton_Param.Location = new System.Drawing.Point(135, 18);
+            this.radioButton_Param.Name = "radioButton_Param";
+            this.radioButton_Param.Size = new System.Drawing.Size(55, 16);
+            this.radioButton_Param.TabIndex = 36;
+            this.radioButton_Param.TabStop = true;
+            this.radioButton_Param.Text = "Param";
+            this.radioButton_Param.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -604,8 +621,8 @@
             // 
             this.groupBox_Pose.Controls.Add(this.label3);
             this.groupBox_Pose.Controls.Add(this.label2);
-            this.groupBox_Pose.Controls.Add(this.textBox1);
-            this.groupBox_Pose.Controls.Add(this.button2);
+            this.groupBox_Pose.Controls.Add(this.textBox_MoveStepPls);
+            this.groupBox_Pose.Controls.Add(this.button_MovePose2);
             this.groupBox_Pose.Controls.Add(this.button_MovePose1);
             this.groupBox_Pose.Controls.Add(this.label_Pose2);
             this.groupBox_Pose.Controls.Add(this.label_Pose1);
@@ -635,22 +652,22 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Step[pls] =";
             // 
-            // textBox1
+            // textBox_MoveStepPls
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 190);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(75, 19);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "1";
+            this.textBox_MoveStepPls.Location = new System.Drawing.Point(109, 190);
+            this.textBox_MoveStepPls.Name = "textBox_MoveStepPls";
+            this.textBox_MoveStepPls.Size = new System.Drawing.Size(75, 19);
+            this.textBox_MoveStepPls.TabIndex = 6;
+            this.textBox_MoveStepPls.Text = "1";
             // 
-            // button2
+            // button_MovePose2
             // 
-            this.button2.Location = new System.Drawing.Point(109, 159);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "MovePose2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_MovePose2.Location = new System.Drawing.Point(109, 159);
+            this.button_MovePose2.Name = "button_MovePose2";
+            this.button_MovePose2.Size = new System.Drawing.Size(75, 23);
+            this.button_MovePose2.TabIndex = 5;
+            this.button_MovePose2.Text = "MovePose2";
+            this.button_MovePose2.UseVisualStyleBackColor = true;
             // 
             // button_MovePose1
             // 
@@ -701,6 +718,10 @@
             // 
             // groupBox_Parameter
             // 
+            this.groupBox_Parameter.Controls.Add(this.numericUpDown_TempLimit);
+            this.groupBox_Parameter.Controls.Add(this.label10);
+            this.groupBox_Parameter.Controls.Add(this.numericUpDown_CurrentLimit);
+            this.groupBox_Parameter.Controls.Add(this.label7);
             this.groupBox_Parameter.Controls.Add(this.numericUpDown_Speed);
             this.groupBox_Parameter.Controls.Add(this.button_WriteAllAxis);
             this.groupBox_Parameter.Controls.Add(this.label6);
@@ -711,44 +732,9 @@
             this.groupBox_Parameter.TabStop = false;
             this.groupBox_Parameter.Text = "Parameter";
             // 
-            // timer_ViewUpdate
-            // 
-            this.timer_ViewUpdate.Tick += new System.EventHandler(this.timer_ViewUpdate_Tick);
-            // 
-            // radioButton_Param
-            // 
-            this.radioButton_Param.AutoSize = true;
-            this.radioButton_Param.Location = new System.Drawing.Point(135, 18);
-            this.radioButton_Param.Name = "radioButton_Param";
-            this.radioButton_Param.Size = new System.Drawing.Size(55, 16);
-            this.radioButton_Param.TabIndex = 36;
-            this.radioButton_Param.TabStop = true;
-            this.radioButton_Param.Text = "Param";
-            this.radioButton_Param.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 39);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 12);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Speed (1-127)";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // button_WriteAllAxis
-            // 
-            this.button_WriteAllAxis.Location = new System.Drawing.Point(27, 325);
-            this.button_WriteAllAxis.Name = "button_WriteAllAxis";
-            this.button_WriteAllAxis.Size = new System.Drawing.Size(207, 23);
-            this.button_WriteAllAxis.TabIndex = 35;
-            this.button_WriteAllAxis.Text = "Write all axis";
-            this.button_WriteAllAxis.UseVisualStyleBackColor = true;
-            this.button_WriteAllAxis.Click += new System.EventHandler(this.button_WriteAllAxis_Click);
-            // 
             // numericUpDown_Speed
             // 
-            this.numericUpDown_Speed.Location = new System.Drawing.Point(114, 37);
+            this.numericUpDown_Speed.Location = new System.Drawing.Point(159, 37);
             this.numericUpDown_Speed.Maximum = new decimal(new int[] {
             127,
             0,
@@ -760,13 +746,100 @@
             0,
             0});
             this.numericUpDown_Speed.Name = "numericUpDown_Speed";
-            this.numericUpDown_Speed.Size = new System.Drawing.Size(120, 19);
+            this.numericUpDown_Speed.Size = new System.Drawing.Size(75, 19);
             this.numericUpDown_Speed.TabIndex = 37;
             this.numericUpDown_Speed.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // button_WriteAllAxis
+            // 
+            this.button_WriteAllAxis.Location = new System.Drawing.Point(27, 172);
+            this.button_WriteAllAxis.Name = "button_WriteAllAxis";
+            this.button_WriteAllAxis.Size = new System.Drawing.Size(207, 23);
+            this.button_WriteAllAxis.TabIndex = 35;
+            this.button_WriteAllAxis.Text = "Write parameter all axis";
+            this.button_WriteAllAxis.UseVisualStyleBackColor = true;
+            this.button_WriteAllAxis.Click += new System.EventHandler(this.button_WriteAllAxis_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 39);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 12);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Speed (1-127)";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // timer_ViewUpdate
+            // 
+            this.timer_ViewUpdate.Tick += new System.EventHandler(this.timer_ViewUpdate_Tick);
+            // 
+            // numericUpDown_CurrentLimit
+            // 
+            this.numericUpDown_CurrentLimit.Location = new System.Drawing.Point(159, 72);
+            this.numericUpDown_CurrentLimit.Maximum = new decimal(new int[] {
+            63,
+            0,
+            0,
+            0});
+            this.numericUpDown_CurrentLimit.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.numericUpDown_CurrentLimit.Name = "numericUpDown_CurrentLimit";
+            this.numericUpDown_CurrentLimit.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDown_CurrentLimit.TabIndex = 39;
+            this.numericUpDown_CurrentLimit.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(25, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(104, 12);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "CurrentLimit (1-63)";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // numericUpDown_TempLimit
+            // 
+            this.numericUpDown_TempLimit.Location = new System.Drawing.Point(159, 107);
+            this.numericUpDown_TempLimit.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.numericUpDown_TempLimit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_TempLimit.Name = "numericUpDown_TempLimit";
+            this.numericUpDown_TempLimit.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDown_TempLimit.TabIndex = 41;
+            this.numericUpDown_TempLimit.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(25, 109);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 12);
+            this.label10.TabIndex = 40;
+            this.label10.Text = "TempLimit (1-127)";
             // 
             // Form1
             // 
@@ -804,6 +877,8 @@
             this.groupBox_Parameter.ResumeLayout(false);
             this.groupBox_Parameter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TempLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -866,8 +941,8 @@
         private System.Windows.Forms.Button button_SetPose1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox_MoveStepPls;
+        private System.Windows.Forms.Button button_MovePose2;
         private System.Windows.Forms.Button button_MovePose1;
         private System.Windows.Forms.RadioButton radioButton_UdpBridge;
         private System.Windows.Forms.Label label5;
@@ -878,6 +953,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button_WriteAllAxis;
         private System.Windows.Forms.NumericUpDown numericUpDown_Speed;
+        private System.Windows.Forms.NumericUpDown numericUpDown_TempLimit;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown numericUpDown_CurrentLimit;
+        private System.Windows.Forms.Label label7;
     }
 }
 
