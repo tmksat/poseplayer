@@ -20,7 +20,7 @@ namespace poseplayer
         }
         /* destructor */
         /* property */
-        public int Step { get { return step_; } set { step_ = value; } }
+        public int[] Step { get { return step_list_; } }
         /* member, static member */
         /* method, static method */
         public void SetTargetPose(int[] pose, int len)
@@ -33,28 +33,24 @@ namespace poseplayer
             manual_controller_ = c;
         }
 
-        public void Move(int[] target_pose, int move_step)
+        public void Move(int[] target_pose, int[] move_step)
         {
             target_pose_list_ = target_pose;
-            step_ = move_step;
 
             // get current pose list
             for (int i=0; i<kPoseListMaxLength; i++)
             {
-                manual_controller_.Motors[i].PositionFeedback = current_pose_[i];
+                current_pose_[i] = manual_controller_.Motors[i].PositionFeedback;
             }
 
-            // calc step_list_ values...
-            // ...
+            // set initial order values
+            pos_order_list_ = current_pose_;
 
-            lock (lock_)
+            // calc step_list_ values...
+            for (int i=0; i<5; i++)
             {
-                int i = 0;
-                foreach (Motor m in manual_controller_.Motors)
-                {
-                    current_pose_[i] = m.PositionFeedback;
-                    i++;
-                }
+                if (target_pose_list_[i] - current_pose_[i] > 0) step_list_[i] = move_step[i];
+                else step_list_[i] = -(move_step[i]);
             }
 
             is_new_command_ = true;
@@ -93,14 +89,13 @@ namespace poseplayer
         // ----- private -----
         /* typedef, enum */
         /* const */
-        private const int kPoseListMaxLength = 6;
-        private const int kProcessPeriodMs = 5;
+        private const int kPoseListMaxLength = 5;
+        private const int kProcessPeriodMs = 10;
         /* constructor */
         /* destructor */
         /* member, static member */
         private ManualController manual_controller_ = null;
         private int[] target_pose_list_ = new int[kPoseListMaxLength];
-        private int step_ = 0;
         private bool is_thread_enable_ = false;
         private bool is_new_command_ = false;
         //
@@ -117,35 +112,22 @@ namespace poseplayer
             {
                 try
                 {
-                    //if (is_new_command_)
-                    //{
-                    //    // target_pose - cur_pose = diff_pose
-                    //    for (int i=0; i<kPoseListMaxLength; i++)
-                    //    {
-                    //        diff_pose_[i] = pose_list_[i] - current_pose_[i];
-                    //    }
-                    //    // diff_pose >>>> 0
-                    //}
-
-                    // create order value...
-                    lock (lock_)
+                    // calce order value...
+                    for (int i = 0; i < kPoseListMaxLength; i++)
                     {
-                        for (int i = 0; i < kPoseListMaxLength; i++)
+                        if (Math.Abs(target_pose_list_[i] - manual_controller_.Motors[i].PositionCommand) <= Math.Abs(step_list_[i]))
                         {
-                            if (Math.Abs(manual_controller_.Motors[i].PositionCommand - pos_order_list_[i]) < step_list_[i])
-                            {
-                                // target position に到達
-                                manual_controller_.Motors[i].PositionCommand = target_pose_list_[i];
-                            }
-                            else
-                            {
-                                manual_controller_.Motors[i].PositionCommand += step_list_[i];
-                            }
+                            // target position に到達
+                            manual_controller_.Motors[i].PositionCommand = target_pose_list_[i];
                         }
-                        manual_controller_.RunOnce();
-                        Thread.Sleep(kProcessPeriodMs);
+                        else
+                        {
+                            pos_order_list_[i] += step_list_[i];
+                            manual_controller_.Motors[i].PositionCommand = pos_order_list_[i];
+                        }
                     }
-
+                    //manual_controller_.RunOnce();
+                    Thread.Sleep(kProcessPeriodMs);
                 }
                 catch { }
             }

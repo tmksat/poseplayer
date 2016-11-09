@@ -81,9 +81,9 @@
             this.trackBar_J1 = new System.Windows.Forms.TrackBar();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox_Pose = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_MoveStep_J0 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox_MoveStepPls = new System.Windows.Forms.TextBox();
             this.button_MovePose2 = new System.Windows.Forms.Button();
             this.button_MovePose1 = new System.Windows.Forms.Button();
             this.label_Pose2 = new System.Windows.Forms.Label();
@@ -91,15 +91,24 @@
             this.button_SetPose2 = new System.Windows.Forms.Button();
             this.button_SetPose1 = new System.Windows.Forms.Button();
             this.groupBox_Parameter = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_TempLimit = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.numericUpDown_CurrentLimit = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown_Speed = new System.Windows.Forms.NumericUpDown();
             this.button_WriteAllAxis = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.serialPort_Motor = new System.IO.Ports.SerialPort(this.components);
             this.timer_ViewUpdate = new System.Windows.Forms.Timer(this.components);
-            this.numericUpDown_CurrentLimit = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown_TempLimit = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
+            this.checkBox_ControlEnable = new System.Windows.Forms.CheckBox();
+            this.numericUpDown_MoveStep_J1 = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numericUpDown_MoveStep_J2 = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDown_MoveStep_J3 = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.numericUpDown_MoveStep_J4 = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox_Control.SuspendLayout();
             this.groupBox_ComPort.SuspendLayout();
@@ -111,10 +120,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J1)).BeginInit();
             this.groupBox_Pose.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J0)).BeginInit();
             this.groupBox_Parameter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TempLimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentLimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J4)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -329,6 +343,7 @@
             // 
             // groupBox_Manual
             // 
+            this.groupBox_Manual.Controls.Add(this.checkBox_ControlEnable);
             this.groupBox_Manual.Controls.Add(this.checkBox_J6);
             this.groupBox_Manual.Controls.Add(this.checkBox_J5);
             this.groupBox_Manual.Controls.Add(this.checkBox_J4);
@@ -438,7 +453,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(19, 26);
+            this.button1.Location = new System.Drawing.Point(130, 26);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 25);
             this.button1.TabIndex = 26;
@@ -619,9 +634,17 @@
             // 
             // groupBox_Pose
             // 
+            this.groupBox_Pose.Controls.Add(this.numericUpDown_MoveStep_J4);
+            this.groupBox_Pose.Controls.Add(this.label14);
+            this.groupBox_Pose.Controls.Add(this.numericUpDown_MoveStep_J3);
+            this.groupBox_Pose.Controls.Add(this.label13);
+            this.groupBox_Pose.Controls.Add(this.numericUpDown_MoveStep_J2);
+            this.groupBox_Pose.Controls.Add(this.label12);
+            this.groupBox_Pose.Controls.Add(this.numericUpDown_MoveStep_J1);
+            this.groupBox_Pose.Controls.Add(this.label11);
+            this.groupBox_Pose.Controls.Add(this.numericUpDown_MoveStep_J0);
             this.groupBox_Pose.Controls.Add(this.label3);
             this.groupBox_Pose.Controls.Add(this.label2);
-            this.groupBox_Pose.Controls.Add(this.textBox_MoveStepPls);
             this.groupBox_Pose.Controls.Add(this.button_MovePose2);
             this.groupBox_Pose.Controls.Add(this.button_MovePose1);
             this.groupBox_Pose.Controls.Add(this.label_Pose2);
@@ -635,6 +658,18 @@
             this.groupBox_Pose.TabStop = false;
             this.groupBox_Pose.Text = "Pose";
             // 
+            // numericUpDown_MoveStep_J0
+            // 
+            this.numericUpDown_MoveStep_J0.Location = new System.Drawing.Point(109, 207);
+            this.numericUpDown_MoveStep_J0.Name = "numericUpDown_MoveStep_J0";
+            this.numericUpDown_MoveStep_J0.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J0.TabIndex = 9;
+            this.numericUpDown_MoveStep_J0.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -646,19 +681,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 193);
+            this.label2.Location = new System.Drawing.Point(17, 211);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 12);
+            this.label2.Size = new System.Drawing.Size(76, 12);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Step[pls] =";
-            // 
-            // textBox_MoveStepPls
-            // 
-            this.textBox_MoveStepPls.Location = new System.Drawing.Point(109, 190);
-            this.textBox_MoveStepPls.Name = "textBox_MoveStepPls";
-            this.textBox_MoveStepPls.Size = new System.Drawing.Size(75, 19);
-            this.textBox_MoveStepPls.TabIndex = 6;
-            this.textBox_MoveStepPls.Text = "1";
+            this.label2.Text = "MoveStep[J0]";
             // 
             // button_MovePose2
             // 
@@ -668,6 +695,7 @@
             this.button_MovePose2.TabIndex = 5;
             this.button_MovePose2.Text = "MovePose2";
             this.button_MovePose2.UseVisualStyleBackColor = true;
+            this.button_MovePose2.Click += new System.EventHandler(this.button_MovePose2_Click);
             // 
             // button_MovePose1
             // 
@@ -677,6 +705,7 @@
             this.button_MovePose1.TabIndex = 4;
             this.button_MovePose1.Text = "MovePose1";
             this.button_MovePose1.UseVisualStyleBackColor = true;
+            this.button_MovePose1.Click += new System.EventHandler(this.button_MovePose1_Click);
             // 
             // label_Pose2
             // 
@@ -732,51 +761,36 @@
             this.groupBox_Parameter.TabStop = false;
             this.groupBox_Parameter.Text = "Parameter";
             // 
-            // numericUpDown_Speed
+            // numericUpDown_TempLimit
             // 
-            this.numericUpDown_Speed.Location = new System.Drawing.Point(159, 37);
-            this.numericUpDown_Speed.Maximum = new decimal(new int[] {
+            this.numericUpDown_TempLimit.Location = new System.Drawing.Point(159, 107);
+            this.numericUpDown_TempLimit.Maximum = new decimal(new int[] {
             127,
             0,
             0,
             0});
-            this.numericUpDown_Speed.Minimum = new decimal(new int[] {
+            this.numericUpDown_TempLimit.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown_Speed.Name = "numericUpDown_Speed";
-            this.numericUpDown_Speed.Size = new System.Drawing.Size(75, 19);
-            this.numericUpDown_Speed.TabIndex = 37;
-            this.numericUpDown_Speed.Value = new decimal(new int[] {
-            50,
+            this.numericUpDown_TempLimit.Name = "numericUpDown_TempLimit";
+            this.numericUpDown_TempLimit.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDown_TempLimit.TabIndex = 41;
+            this.numericUpDown_TempLimit.Value = new decimal(new int[] {
+            60,
             0,
             0,
             0});
             // 
-            // button_WriteAllAxis
+            // label10
             // 
-            this.button_WriteAllAxis.Location = new System.Drawing.Point(27, 172);
-            this.button_WriteAllAxis.Name = "button_WriteAllAxis";
-            this.button_WriteAllAxis.Size = new System.Drawing.Size(207, 23);
-            this.button_WriteAllAxis.TabIndex = 35;
-            this.button_WriteAllAxis.Text = "Write parameter all axis";
-            this.button_WriteAllAxis.UseVisualStyleBackColor = true;
-            this.button_WriteAllAxis.Click += new System.EventHandler(this.button_WriteAllAxis_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 39);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 12);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Speed (1-127)";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // timer_ViewUpdate
-            // 
-            this.timer_ViewUpdate.Tick += new System.EventHandler(this.timer_ViewUpdate_Tick);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(25, 109);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 12);
+            this.label10.TabIndex = 40;
+            this.label10.Text = "TempLimit (1-127)";
             // 
             // numericUpDown_CurrentLimit
             // 
@@ -810,36 +824,145 @@
             this.label7.Text = "CurrentLimit (1-63)";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // numericUpDown_TempLimit
+            // numericUpDown_Speed
             // 
-            this.numericUpDown_TempLimit.Location = new System.Drawing.Point(159, 107);
-            this.numericUpDown_TempLimit.Maximum = new decimal(new int[] {
+            this.numericUpDown_Speed.Location = new System.Drawing.Point(159, 37);
+            this.numericUpDown_Speed.Maximum = new decimal(new int[] {
             127,
             0,
             0,
             0});
-            this.numericUpDown_TempLimit.Minimum = new decimal(new int[] {
+            this.numericUpDown_Speed.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown_TempLimit.Name = "numericUpDown_TempLimit";
-            this.numericUpDown_TempLimit.Size = new System.Drawing.Size(75, 19);
-            this.numericUpDown_TempLimit.TabIndex = 41;
-            this.numericUpDown_TempLimit.Value = new decimal(new int[] {
-            60,
+            this.numericUpDown_Speed.Name = "numericUpDown_Speed";
+            this.numericUpDown_Speed.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDown_Speed.TabIndex = 37;
+            this.numericUpDown_Speed.Value = new decimal(new int[] {
+            126,
             0,
             0,
             0});
             // 
-            // label10
+            // button_WriteAllAxis
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(25, 109);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 12);
-            this.label10.TabIndex = 40;
-            this.label10.Text = "TempLimit (1-127)";
+            this.button_WriteAllAxis.Location = new System.Drawing.Point(27, 172);
+            this.button_WriteAllAxis.Name = "button_WriteAllAxis";
+            this.button_WriteAllAxis.Size = new System.Drawing.Size(207, 23);
+            this.button_WriteAllAxis.TabIndex = 35;
+            this.button_WriteAllAxis.Text = "Write parameter all axis";
+            this.button_WriteAllAxis.UseVisualStyleBackColor = true;
+            this.button_WriteAllAxis.Click += new System.EventHandler(this.button_WriteAllAxis_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 39);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 12);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Speed (1-127)";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // timer_ViewUpdate
+            // 
+            this.timer_ViewUpdate.Tick += new System.EventHandler(this.timer_ViewUpdate_Tick);
+            // 
+            // checkBox_ControlEnable
+            // 
+            this.checkBox_ControlEnable.AutoSize = true;
+            this.checkBox_ControlEnable.Location = new System.Drawing.Point(19, 31);
+            this.checkBox_ControlEnable.Name = "checkBox_ControlEnable";
+            this.checkBox_ControlEnable.Size = new System.Drawing.Size(95, 16);
+            this.checkBox_ControlEnable.TabIndex = 33;
+            this.checkBox_ControlEnable.Text = "ControlEnable";
+            this.checkBox_ControlEnable.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown_MoveStep_J1
+            // 
+            this.numericUpDown_MoveStep_J1.Location = new System.Drawing.Point(109, 232);
+            this.numericUpDown_MoveStep_J1.Name = "numericUpDown_MoveStep_J1";
+            this.numericUpDown_MoveStep_J1.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J1.TabIndex = 11;
+            this.numericUpDown_MoveStep_J1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(17, 236);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(76, 12);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "MoveStep[J1]";
+            // 
+            // numericUpDown_MoveStep_J2
+            // 
+            this.numericUpDown_MoveStep_J2.Location = new System.Drawing.Point(109, 257);
+            this.numericUpDown_MoveStep_J2.Name = "numericUpDown_MoveStep_J2";
+            this.numericUpDown_MoveStep_J2.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J2.TabIndex = 13;
+            this.numericUpDown_MoveStep_J2.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 261);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(76, 12);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "MoveStep[J2]";
+            // 
+            // numericUpDown_MoveStep_J3
+            // 
+            this.numericUpDown_MoveStep_J3.Location = new System.Drawing.Point(109, 282);
+            this.numericUpDown_MoveStep_J3.Name = "numericUpDown_MoveStep_J3";
+            this.numericUpDown_MoveStep_J3.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J3.TabIndex = 15;
+            this.numericUpDown_MoveStep_J3.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(17, 286);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 12);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "MoveStep[J3]";
+            // 
+            // numericUpDown_MoveStep_J4
+            // 
+            this.numericUpDown_MoveStep_J4.Location = new System.Drawing.Point(109, 307);
+            this.numericUpDown_MoveStep_J4.Name = "numericUpDown_MoveStep_J4";
+            this.numericUpDown_MoveStep_J4.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J4.TabIndex = 17;
+            this.numericUpDown_MoveStep_J4.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(17, 311);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 12);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "MoveStep[J4]";
             // 
             // Form1
             // 
@@ -874,11 +997,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J1)).EndInit();
             this.groupBox_Pose.ResumeLayout(false);
             this.groupBox_Pose.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J0)).EndInit();
             this.groupBox_Parameter.ResumeLayout(false);
             this.groupBox_Parameter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TempLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -941,7 +1069,6 @@
         private System.Windows.Forms.Button button_SetPose1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox_MoveStepPls;
         private System.Windows.Forms.Button button_MovePose2;
         private System.Windows.Forms.Button button_MovePose1;
         private System.Windows.Forms.RadioButton radioButton_UdpBridge;
@@ -957,6 +1084,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown numericUpDown_CurrentLimit;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDown_MoveStep_J0;
+        private System.Windows.Forms.CheckBox checkBox_ControlEnable;
+        private System.Windows.Forms.NumericUpDown numericUpDown_MoveStep_J4;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown numericUpDown_MoveStep_J3;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown numericUpDown_MoveStep_J2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown numericUpDown_MoveStep_J1;
+        private System.Windows.Forms.Label label11;
     }
 }
 
