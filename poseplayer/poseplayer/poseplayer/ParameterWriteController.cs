@@ -125,6 +125,29 @@ namespace poseplayer
 
                 Thread.Sleep(5);    // 5ms
             }
+
+            Thread.Sleep(5);    // 5ms
+
+            // stretch
+            for (int i = 0; i < kMaxMotorNum; i++)
+            {
+                byte[] send_command = new byte[256];
+                int data_length = 0;
+                data_length = motors_[i].SerializeStretch(send_command);
+                if (uart_.IsOpen)
+                    uart_.DiscardInBuffer();
+                uart_.Write(send_command, 0, data_length);
+
+                Thread.Sleep(5);    // 5ms
+
+                byte[] read_data = new byte[6];
+                if (uart_.IsOpen)
+                    uart_.Read(read_data, 0, 6);
+                int read_id = read_data[3] & 0x1f;
+                motors_[i].StretchFeedback = (read_data[5]);
+
+                Thread.Sleep(5);    // 5ms
+            }
         }
 
         public override void Kill()

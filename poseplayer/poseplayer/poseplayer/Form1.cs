@@ -27,7 +27,7 @@ namespace poseplayer
         private object command_value_lock_ = new object();
 
         //private int[] pose1_list_ = new int[5];
-        private int[] pose1_list_ = { 8629, 7953, 10115, 7496, 0 };
+        private int[] pose1_list_ = { 8620, 7686, 10095, 7514, 0 };
         //private int[] pose2_list_ = new int[5];
         private int[] pose2_list_ = { 8658, 9770, 5603, 7514, 0 };
         
@@ -402,12 +402,14 @@ namespace poseplayer
         {
             if (parameter_write_controller_ != null)
             {
+                int order_stretch = (int)numericUpDown_Stretch.Value;
                 int order_speed = (int)numericUpDown_Speed.Value;
                 int order_curlimit = (int)numericUpDown_CurrentLimit.Value;
                 int order_templimit = (int)numericUpDown_TempLimit.Value;
 
                 foreach (Motor m in parameter_write_controller_.Motors)
                 {
+                    m.Stretch = order_stretch;
                     m.Speed = order_speed;
                     m.CurrentLimit = order_curlimit;
                     m.TempLimit = order_templimit;

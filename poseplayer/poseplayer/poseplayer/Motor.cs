@@ -55,6 +55,27 @@ namespace poseplayer
         }
 
         // set speed parameter
+        public int SerializeStretch(byte[] d)
+        {
+            int ret = 0;
+            // serialize process...
+
+            // cmd, id
+            if (id_ >= 0 && id_ <= 31)
+            {
+                d[(int)eCommandIndex.CMD] = (byte)(kKondoParameterWrite | id_);
+            }
+            else { }
+
+            d[(int)eParameterWriteIndex.SC] = kKondoSCStretch;
+            d[(int)eParameterWriteIndex.PARAMETER_VALUE] = (byte)(clump(kParameterStretchMinDefault, kParameterStretchMaxDefault, stretch_));
+
+            ret = (int)eParameterWriteIndex.COMMAND_PACKET_LENGTH;
+
+            return ret;
+        }
+
+        // set speed parameter
         public int SerializeSpeed(byte[] d)
         {
             int ret = 0;
@@ -143,6 +164,8 @@ namespace poseplayer
         public int PositionCommand { get { return position_command_; } set { position_command_ = value; } }
         public int PositionFeedback { get { return position_feedback_; } set { position_feedback_ = value; } }
         public int Id { get { return id_; } }
+        public int Stretch { get { return stretch_; } set { stretch_ = value; } }
+        public int StretchFeedback { get { return stretch_feedback_; } set { stretch_feedback_ = value; } }
         public int Speed { get { return speed_; } set { speed_ = value; } }
         public int SpeedFeedback { get { return speed_feedback_; } set { speed_feedback_ = value; } }
         public int CurrentLimit { get { return currentlimit_; } set { currentlimit_ = value; } }
@@ -181,6 +204,7 @@ namespace poseplayer
         /* const */
         private const byte kKondoPositionCommand = 0x80;
         private const byte kKondoParameterWrite = 0xC0;
+        private const byte kKondoSCStretch = 0x01;
         private const byte kKondoSCSpeed = 0x02;
         private const byte kKondoSCCurLim = 0x03;
         private const byte kKondoSCTmpLim = 0x04;
@@ -188,6 +212,9 @@ namespace poseplayer
         //
         private const int kPositionCommandMaxDefault = 11500;
         private const int kPositionCommandMinDefault = 3500;
+        //
+        private const int kParameterStretchMaxDefault = 127;
+        private const int kParameterStretchMinDefault = 1;
         //
         private const int kParameterSpeedMaxDefault = 127;
         private const int kParameterSpeedMinDefault = 1;
@@ -206,6 +233,8 @@ namespace poseplayer
         private int id_ = 0;
         private int position_command_ = 0;
         private int position_feedback_ = 0;
+        private int stretch_ = 1;
+        private int stretch_feedback_ = 0;
         private int speed_ = 1;
         private int speed_feedback_ = 0;
         private int currentlimit_ = 1;

@@ -109,6 +109,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.numericUpDown_MoveStep_J4 = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
+            this.numericUpDown_Stretch = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox_Control.SuspendLayout();
             this.groupBox_ComPort.SuspendLayout();
@@ -129,6 +131,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Stretch)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -747,6 +750,8 @@
             // 
             // groupBox_Parameter
             // 
+            this.groupBox_Parameter.Controls.Add(this.numericUpDown_Stretch);
+            this.groupBox_Parameter.Controls.Add(this.label15);
             this.groupBox_Parameter.Controls.Add(this.numericUpDown_TempLimit);
             this.groupBox_Parameter.Controls.Add(this.label10);
             this.groupBox_Parameter.Controls.Add(this.numericUpDown_CurrentLimit);
@@ -763,7 +768,7 @@
             // 
             // numericUpDown_TempLimit
             // 
-            this.numericUpDown_TempLimit.Location = new System.Drawing.Point(159, 107);
+            this.numericUpDown_TempLimit.Location = new System.Drawing.Point(159, 130);
             this.numericUpDown_TempLimit.Maximum = new decimal(new int[] {
             127,
             0,
@@ -786,7 +791,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(25, 109);
+            this.label10.Location = new System.Drawing.Point(25, 132);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 12);
             this.label10.TabIndex = 40;
@@ -794,7 +799,7 @@
             // 
             // numericUpDown_CurrentLimit
             // 
-            this.numericUpDown_CurrentLimit.Location = new System.Drawing.Point(159, 72);
+            this.numericUpDown_CurrentLimit.Location = new System.Drawing.Point(159, 95);
             this.numericUpDown_CurrentLimit.Maximum = new decimal(new int[] {
             63,
             0,
@@ -817,7 +822,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 74);
+            this.label7.Location = new System.Drawing.Point(25, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(104, 12);
             this.label7.TabIndex = 38;
@@ -826,7 +831,7 @@
             // 
             // numericUpDown_Speed
             // 
-            this.numericUpDown_Speed.Location = new System.Drawing.Point(159, 37);
+            this.numericUpDown_Speed.Location = new System.Drawing.Point(159, 60);
             this.numericUpDown_Speed.Maximum = new decimal(new int[] {
             127,
             0,
@@ -859,7 +864,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 39);
+            this.label6.Location = new System.Drawing.Point(25, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 12);
             this.label6.TabIndex = 33;
@@ -964,6 +969,37 @@
             this.label14.TabIndex = 16;
             this.label14.Text = "MoveStep[J4]";
             // 
+            // numericUpDown_Stretch
+            // 
+            this.numericUpDown_Stretch.Location = new System.Drawing.Point(159, 26);
+            this.numericUpDown_Stretch.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.numericUpDown_Stretch.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_Stretch.Name = "numericUpDown_Stretch";
+            this.numericUpDown_Stretch.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDown_Stretch.TabIndex = 43;
+            this.numericUpDown_Stretch.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(25, 28);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(84, 12);
+            this.label15.TabIndex = 42;
+            this.label15.Text = "Stretch (1-127)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1007,6 +1043,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Stretch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1094,6 +1131,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown numericUpDown_MoveStep_J1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Stretch;
+        private System.Windows.Forms.Label label15;
     }
 }
 
