@@ -195,7 +195,7 @@
             // 
             this.posePlayerTomokiSatoToolStripMenuItem.Name = "posePlayerTomokiSatoToolStripMenuItem";
             this.posePlayerTomokiSatoToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.posePlayerTomokiSatoToolStripMenuItem.Text = "PosePlayer 1.0.0 by tomoki sato";
+            this.posePlayerTomokiSatoToolStripMenuItem.Text = "PosePlayer 1.1.0 by tomoki sato";
             this.posePlayerTomokiSatoToolStripMenuItem.Click += new System.EventHandler(this.posePlayerTomokiSatoToolStripMenuItem_Click);
             // 
             // groupBox_Control
