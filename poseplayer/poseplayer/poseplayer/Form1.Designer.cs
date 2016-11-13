@@ -52,6 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_ComPorts = new System.Windows.Forms.ComboBox();
             this.groupBox_Manual = new System.Windows.Forms.GroupBox();
+            this.checkBox_ControlEnable = new System.Windows.Forms.CheckBox();
             this.checkBox_J6 = new System.Windows.Forms.CheckBox();
             this.checkBox_J5 = new System.Windows.Forms.CheckBox();
             this.checkBox_J4 = new System.Windows.Forms.CheckBox();
@@ -81,6 +82,14 @@
             this.trackBar_J1 = new System.Windows.Forms.TrackBar();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox_Pose = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_MoveStep_J4 = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.numericUpDown_MoveStep_J3 = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.numericUpDown_MoveStep_J2 = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDown_MoveStep_J1 = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
             this.numericUpDown_MoveStep_J0 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -91,6 +100,8 @@
             this.button_SetPose2 = new System.Windows.Forms.Button();
             this.button_SetPose1 = new System.Windows.Forms.Button();
             this.groupBox_Parameter = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_Stretch = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
             this.numericUpDown_TempLimit = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.numericUpDown_CurrentLimit = new System.Windows.Forms.NumericUpDown();
@@ -100,17 +111,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.serialPort_Motor = new System.IO.Ports.SerialPort(this.components);
             this.timer_ViewUpdate = new System.Windows.Forms.Timer(this.components);
-            this.checkBox_ControlEnable = new System.Windows.Forms.CheckBox();
-            this.numericUpDown_MoveStep_J1 = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDown_MoveStep_J2 = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDown_MoveStep_J3 = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.numericUpDown_MoveStep_J4 = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.numericUpDown_Stretch = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
+            this.label_Pose3 = new System.Windows.Forms.Label();
+            this.button_SetPose3 = new System.Windows.Forms.Button();
+            this.label_Pose4 = new System.Windows.Forms.Label();
+            this.button_SetPose4 = new System.Windows.Forms.Button();
+            this.label_Pose5 = new System.Windows.Forms.Label();
+            this.button_SetPose5 = new System.Windows.Forms.Button();
+            this.button_MovePose3 = new System.Windows.Forms.Button();
+            this.button_MovePose4 = new System.Windows.Forms.Button();
+            this.button_MovePose5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox_Control.SuspendLayout();
             this.groupBox_ComPort.SuspendLayout();
@@ -122,16 +131,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J1)).BeginInit();
             this.groupBox_Pose.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J0)).BeginInit();
             this.groupBox_Parameter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Stretch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TempLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Stretch)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -380,6 +389,16 @@
             this.groupBox_Manual.TabIndex = 5;
             this.groupBox_Manual.TabStop = false;
             this.groupBox_Manual.Text = "Manual";
+            // 
+            // checkBox_ControlEnable
+            // 
+            this.checkBox_ControlEnable.AutoSize = true;
+            this.checkBox_ControlEnable.Location = new System.Drawing.Point(19, 31);
+            this.checkBox_ControlEnable.Name = "checkBox_ControlEnable";
+            this.checkBox_ControlEnable.Size = new System.Drawing.Size(95, 16);
+            this.checkBox_ControlEnable.TabIndex = 33;
+            this.checkBox_ControlEnable.Text = "ControlEnable";
+            this.checkBox_ControlEnable.UseVisualStyleBackColor = true;
             // 
             // checkBox_J6
             // 
@@ -637,6 +656,15 @@
             // 
             // groupBox_Pose
             // 
+            this.groupBox_Pose.Controls.Add(this.button_MovePose5);
+            this.groupBox_Pose.Controls.Add(this.button_MovePose4);
+            this.groupBox_Pose.Controls.Add(this.button_MovePose3);
+            this.groupBox_Pose.Controls.Add(this.label_Pose5);
+            this.groupBox_Pose.Controls.Add(this.button_SetPose5);
+            this.groupBox_Pose.Controls.Add(this.label_Pose4);
+            this.groupBox_Pose.Controls.Add(this.button_SetPose4);
+            this.groupBox_Pose.Controls.Add(this.label_Pose3);
+            this.groupBox_Pose.Controls.Add(this.button_SetPose3);
             this.groupBox_Pose.Controls.Add(this.numericUpDown_MoveStep_J4);
             this.groupBox_Pose.Controls.Add(this.label14);
             this.groupBox_Pose.Controls.Add(this.numericUpDown_MoveStep_J3);
@@ -661,9 +689,93 @@
             this.groupBox_Pose.TabStop = false;
             this.groupBox_Pose.Text = "Pose";
             // 
+            // numericUpDown_MoveStep_J4
+            // 
+            this.numericUpDown_MoveStep_J4.Location = new System.Drawing.Point(107, 343);
+            this.numericUpDown_MoveStep_J4.Name = "numericUpDown_MoveStep_J4";
+            this.numericUpDown_MoveStep_J4.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J4.TabIndex = 17;
+            this.numericUpDown_MoveStep_J4.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(15, 347);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 12);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "MoveStep[J4]";
+            // 
+            // numericUpDown_MoveStep_J3
+            // 
+            this.numericUpDown_MoveStep_J3.Location = new System.Drawing.Point(107, 318);
+            this.numericUpDown_MoveStep_J3.Name = "numericUpDown_MoveStep_J3";
+            this.numericUpDown_MoveStep_J3.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J3.TabIndex = 15;
+            this.numericUpDown_MoveStep_J3.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(15, 322);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 12);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "MoveStep[J3]";
+            // 
+            // numericUpDown_MoveStep_J2
+            // 
+            this.numericUpDown_MoveStep_J2.Location = new System.Drawing.Point(107, 293);
+            this.numericUpDown_MoveStep_J2.Name = "numericUpDown_MoveStep_J2";
+            this.numericUpDown_MoveStep_J2.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J2.TabIndex = 13;
+            this.numericUpDown_MoveStep_J2.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 297);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(76, 12);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "MoveStep[J2]";
+            // 
+            // numericUpDown_MoveStep_J1
+            // 
+            this.numericUpDown_MoveStep_J1.Location = new System.Drawing.Point(107, 268);
+            this.numericUpDown_MoveStep_J1.Name = "numericUpDown_MoveStep_J1";
+            this.numericUpDown_MoveStep_J1.Size = new System.Drawing.Size(66, 19);
+            this.numericUpDown_MoveStep_J1.TabIndex = 11;
+            this.numericUpDown_MoveStep_J1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(15, 272);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(76, 12);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "MoveStep[J1]";
+            // 
             // numericUpDown_MoveStep_J0
             // 
-            this.numericUpDown_MoveStep_J0.Location = new System.Drawing.Point(109, 207);
+            this.numericUpDown_MoveStep_J0.Location = new System.Drawing.Point(107, 243);
             this.numericUpDown_MoveStep_J0.Name = "numericUpDown_MoveStep_J0";
             this.numericUpDown_MoveStep_J0.Size = new System.Drawing.Size(66, 19);
             this.numericUpDown_MoveStep_J0.TabIndex = 9;
@@ -684,7 +796,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 211);
+            this.label2.Location = new System.Drawing.Point(15, 247);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 12);
             this.label2.TabIndex = 7;
@@ -692,7 +804,7 @@
             // 
             // button_MovePose2
             // 
-            this.button_MovePose2.Location = new System.Drawing.Point(109, 159);
+            this.button_MovePose2.Location = new System.Drawing.Point(96, 177);
             this.button_MovePose2.Name = "button_MovePose2";
             this.button_MovePose2.Size = new System.Drawing.Size(75, 23);
             this.button_MovePose2.TabIndex = 5;
@@ -702,7 +814,7 @@
             // 
             // button_MovePose1
             // 
-            this.button_MovePose1.Location = new System.Drawing.Point(15, 159);
+            this.button_MovePose1.Location = new System.Drawing.Point(15, 177);
             this.button_MovePose1.Name = "button_MovePose1";
             this.button_MovePose1.Size = new System.Drawing.Size(75, 23);
             this.button_MovePose1.TabIndex = 4;
@@ -713,7 +825,7 @@
             // label_Pose2
             // 
             this.label_Pose2.AutoSize = true;
-            this.label_Pose2.Location = new System.Drawing.Point(15, 117);
+            this.label_Pose2.Location = new System.Drawing.Point(91, 55);
             this.label_Pose2.Name = "label_Pose2";
             this.label_Pose2.Size = new System.Drawing.Size(42, 12);
             this.label_Pose2.TabIndex = 3;
@@ -722,7 +834,7 @@
             // label_Pose1
             // 
             this.label_Pose1.AutoSize = true;
-            this.label_Pose1.Location = new System.Drawing.Point(15, 67);
+            this.label_Pose1.Location = new System.Drawing.Point(91, 28);
             this.label_Pose1.Name = "label_Pose1";
             this.label_Pose1.Size = new System.Drawing.Size(42, 12);
             this.label_Pose1.TabIndex = 2;
@@ -730,7 +842,7 @@
             // 
             // button_SetPose2
             // 
-            this.button_SetPose2.Location = new System.Drawing.Point(109, 21);
+            this.button_SetPose2.Location = new System.Drawing.Point(15, 50);
             this.button_SetPose2.Name = "button_SetPose2";
             this.button_SetPose2.Size = new System.Drawing.Size(75, 23);
             this.button_SetPose2.TabIndex = 1;
@@ -765,6 +877,37 @@
             this.groupBox_Parameter.TabIndex = 8;
             this.groupBox_Parameter.TabStop = false;
             this.groupBox_Parameter.Text = "Parameter";
+            // 
+            // numericUpDown_Stretch
+            // 
+            this.numericUpDown_Stretch.Location = new System.Drawing.Point(159, 26);
+            this.numericUpDown_Stretch.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.numericUpDown_Stretch.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_Stretch.Name = "numericUpDown_Stretch";
+            this.numericUpDown_Stretch.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDown_Stretch.TabIndex = 43;
+            this.numericUpDown_Stretch.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(25, 28);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(84, 12);
+            this.label15.TabIndex = 42;
+            this.label15.Text = "Stretch (1-127)";
             // 
             // numericUpDown_TempLimit
             // 
@@ -875,130 +1018,86 @@
             // 
             this.timer_ViewUpdate.Tick += new System.EventHandler(this.timer_ViewUpdate_Tick);
             // 
-            // checkBox_ControlEnable
+            // label_Pose3
             // 
-            this.checkBox_ControlEnable.AutoSize = true;
-            this.checkBox_ControlEnable.Location = new System.Drawing.Point(19, 31);
-            this.checkBox_ControlEnable.Name = "checkBox_ControlEnable";
-            this.checkBox_ControlEnable.Size = new System.Drawing.Size(95, 16);
-            this.checkBox_ControlEnable.TabIndex = 33;
-            this.checkBox_ControlEnable.Text = "ControlEnable";
-            this.checkBox_ControlEnable.UseVisualStyleBackColor = true;
+            this.label_Pose3.AutoSize = true;
+            this.label_Pose3.Location = new System.Drawing.Point(91, 84);
+            this.label_Pose3.Name = "label_Pose3";
+            this.label_Pose3.Size = new System.Drawing.Size(42, 12);
+            this.label_Pose3.TabIndex = 19;
+            this.label_Pose3.Text = "Pose3=";
             // 
-            // numericUpDown_MoveStep_J1
+            // button_SetPose3
             // 
-            this.numericUpDown_MoveStep_J1.Location = new System.Drawing.Point(109, 232);
-            this.numericUpDown_MoveStep_J1.Name = "numericUpDown_MoveStep_J1";
-            this.numericUpDown_MoveStep_J1.Size = new System.Drawing.Size(66, 19);
-            this.numericUpDown_MoveStep_J1.TabIndex = 11;
-            this.numericUpDown_MoveStep_J1.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.button_SetPose3.Location = new System.Drawing.Point(15, 79);
+            this.button_SetPose3.Name = "button_SetPose3";
+            this.button_SetPose3.Size = new System.Drawing.Size(75, 23);
+            this.button_SetPose3.TabIndex = 18;
+            this.button_SetPose3.Text = "SetPose3";
+            this.button_SetPose3.UseVisualStyleBackColor = true;
             // 
-            // label11
+            // label_Pose4
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 236);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 12);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "MoveStep[J1]";
+            this.label_Pose4.AutoSize = true;
+            this.label_Pose4.Location = new System.Drawing.Point(91, 113);
+            this.label_Pose4.Name = "label_Pose4";
+            this.label_Pose4.Size = new System.Drawing.Size(42, 12);
+            this.label_Pose4.TabIndex = 21;
+            this.label_Pose4.Text = "Pose4=";
             // 
-            // numericUpDown_MoveStep_J2
+            // button_SetPose4
             // 
-            this.numericUpDown_MoveStep_J2.Location = new System.Drawing.Point(109, 257);
-            this.numericUpDown_MoveStep_J2.Name = "numericUpDown_MoveStep_J2";
-            this.numericUpDown_MoveStep_J2.Size = new System.Drawing.Size(66, 19);
-            this.numericUpDown_MoveStep_J2.TabIndex = 13;
-            this.numericUpDown_MoveStep_J2.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
+            this.button_SetPose4.Location = new System.Drawing.Point(15, 108);
+            this.button_SetPose4.Name = "button_SetPose4";
+            this.button_SetPose4.Size = new System.Drawing.Size(75, 23);
+            this.button_SetPose4.TabIndex = 20;
+            this.button_SetPose4.Text = "SetPose4";
+            this.button_SetPose4.UseVisualStyleBackColor = true;
             // 
-            // label12
+            // label_Pose5
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 261);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 12);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "MoveStep[J2]";
+            this.label_Pose5.AutoSize = true;
+            this.label_Pose5.Location = new System.Drawing.Point(91, 144);
+            this.label_Pose5.Name = "label_Pose5";
+            this.label_Pose5.Size = new System.Drawing.Size(42, 12);
+            this.label_Pose5.TabIndex = 23;
+            this.label_Pose5.Text = "Pose5=";
             // 
-            // numericUpDown_MoveStep_J3
+            // button_SetPose5
             // 
-            this.numericUpDown_MoveStep_J3.Location = new System.Drawing.Point(109, 282);
-            this.numericUpDown_MoveStep_J3.Name = "numericUpDown_MoveStep_J3";
-            this.numericUpDown_MoveStep_J3.Size = new System.Drawing.Size(66, 19);
-            this.numericUpDown_MoveStep_J3.TabIndex = 15;
-            this.numericUpDown_MoveStep_J3.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.button_SetPose5.Location = new System.Drawing.Point(15, 139);
+            this.button_SetPose5.Name = "button_SetPose5";
+            this.button_SetPose5.Size = new System.Drawing.Size(75, 23);
+            this.button_SetPose5.TabIndex = 22;
+            this.button_SetPose5.Text = "SetPose5";
+            this.button_SetPose5.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // button_MovePose3
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(17, 286);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 12);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "MoveStep[J3]";
+            this.button_MovePose3.Location = new System.Drawing.Point(177, 177);
+            this.button_MovePose3.Name = "button_MovePose3";
+            this.button_MovePose3.Size = new System.Drawing.Size(75, 23);
+            this.button_MovePose3.TabIndex = 24;
+            this.button_MovePose3.Text = "MovePose3";
+            this.button_MovePose3.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown_MoveStep_J4
+            // button_MovePose4
             // 
-            this.numericUpDown_MoveStep_J4.Location = new System.Drawing.Point(109, 307);
-            this.numericUpDown_MoveStep_J4.Name = "numericUpDown_MoveStep_J4";
-            this.numericUpDown_MoveStep_J4.Size = new System.Drawing.Size(66, 19);
-            this.numericUpDown_MoveStep_J4.TabIndex = 17;
-            this.numericUpDown_MoveStep_J4.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.button_MovePose4.Location = new System.Drawing.Point(15, 206);
+            this.button_MovePose4.Name = "button_MovePose4";
+            this.button_MovePose4.Size = new System.Drawing.Size(75, 23);
+            this.button_MovePose4.TabIndex = 25;
+            this.button_MovePose4.Text = "MovePose4";
+            this.button_MovePose4.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // button_MovePose5
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(17, 311);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 12);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "MoveStep[J4]";
-            // 
-            // numericUpDown_Stretch
-            // 
-            this.numericUpDown_Stretch.Location = new System.Drawing.Point(159, 26);
-            this.numericUpDown_Stretch.Maximum = new decimal(new int[] {
-            127,
-            0,
-            0,
-            0});
-            this.numericUpDown_Stretch.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown_Stretch.Name = "numericUpDown_Stretch";
-            this.numericUpDown_Stretch.Size = new System.Drawing.Size(75, 19);
-            this.numericUpDown_Stretch.TabIndex = 43;
-            this.numericUpDown_Stretch.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(25, 28);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(84, 12);
-            this.label15.TabIndex = 42;
-            this.label15.Text = "Stretch (1-127)";
+            this.button_MovePose5.Location = new System.Drawing.Point(96, 206);
+            this.button_MovePose5.Name = "button_MovePose5";
+            this.button_MovePose5.Size = new System.Drawing.Size(75, 23);
+            this.button_MovePose5.TabIndex = 26;
+            this.button_MovePose5.Text = "MovePose5";
+            this.button_MovePose5.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1033,17 +1132,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_J1)).EndInit();
             this.groupBox_Pose.ResumeLayout(false);
             this.groupBox_Pose.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J0)).EndInit();
             this.groupBox_Parameter.ResumeLayout(false);
             this.groupBox_Parameter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Stretch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TempLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MoveStep_J4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Stretch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1133,6 +1232,15 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown numericUpDown_Stretch;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button_MovePose5;
+        private System.Windows.Forms.Button button_MovePose4;
+        private System.Windows.Forms.Button button_MovePose3;
+        private System.Windows.Forms.Label label_Pose5;
+        private System.Windows.Forms.Button button_SetPose5;
+        private System.Windows.Forms.Label label_Pose4;
+        private System.Windows.Forms.Button button_SetPose4;
+        private System.Windows.Forms.Label label_Pose3;
+        private System.Windows.Forms.Button button_SetPose3;
     }
 }
 
