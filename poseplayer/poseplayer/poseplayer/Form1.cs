@@ -20,11 +20,16 @@ namespace poseplayer
         
         private ManualController manual_controller_ = null;
         private PoseController pose_controller_ = null;
+        //
+        private ParameterWriteController parameter_write_controller_ = null;
+        //
         private UdpBridgeController udp_bridge_controller_ = null;
         private object command_value_lock_ = new object();
 
-        private int[] pose1_list_ = new int[5];
-        private int[] pose2_list_ = new int[5];
+        //private int[] pose1_list_ = new int[5];
+        private int[] pose1_list_ = { 8620, 7686, 10095, 7514, 0 };
+        //private int[] pose2_list_ = new int[5];
+        private int[] pose2_list_ = { 8658, 9770, 5603, 7514, 0 };
         
         public Form1()
         {
@@ -124,6 +129,10 @@ namespace poseplayer
 
                         if (radioButton_Manual.Checked)
                         {
+                            // control unlock...
+                            checkBox_ControlEnable.Checked = false;
+                            checkBox_ControlEnable.Enabled = true;
+
                             // manual mode
                             manual_controller_ = new ManualController(serialPort_Motor);
                             manual_controller_.Init();
@@ -131,13 +140,25 @@ namespace poseplayer
                         }
                         else if (radioButton_Pose.Checked)
                         {
-                            // pose mode
+                            // control lock...
+                            checkBox_ControlEnable.Checked = false;
+                            checkBox_ControlEnable.Enabled = false;
+                            
+                            // start pose mode thread and manual mode thread
                             manual_controller_ = new ManualController(serialPort_Motor);
                             pose_controller_ = new PoseController(manual_controller_);
                             manual_controller_.Init();
                             manual_controller_.Start();
                             //pose_controller_.Init();
                             pose_controller_.Start();
+                        }
+                        else if (radioButton_Param.Checked)
+                        {
+                            // parameter mode
+                            parameter_write_controller_ = new ParameterWriteController(serialPort_Motor);
+                            parameter_write_controller_.Init();
+                            parameter_write_controller_.Start();
+
                         }else if(radioButton_UdpBridge.Checked)
                         {
                             // UdpBridge Mode
@@ -169,12 +190,24 @@ namespace poseplayer
                         }
                         else { }
 
-                        if(udp_bridge_controller_ != null)
+                        if (udp_bridge_controller_ != null)
                         {
                             udp_bridge_controller_.Kill();
                             udp_bridge_controller_.Dispose();
                             udp_bridge_controller_ = null;
                         }
+                        else { }
+
+                        if (parameter_write_controller_ != null)
+                        {
+                            parameter_write_controller_.Kill();
+                            parameter_write_controller_.Dispose();
+                            parameter_write_controller_ = null;
+                        }
+
+                        // control unlock
+                        checkBox_ControlEnable.Checked = false;
+                        checkBox_ControlEnable.Enabled = true;
 
                         button_ControlStart.Text = "Start";
                     }
@@ -252,25 +285,39 @@ namespace poseplayer
 
                 if (manual_controller_ != null)
                 {
-                    manual_controller_.Motors[0].PositionCommand = Convert.ToInt32(textBox_CmdJ1.Text);
+                    if (checkBox_ControlEnable.Checked)
+                    {
+                        // input to manual controller from textbox value
+                        manual_controller_.Motors[0].PositionCommand = Convert.ToInt32(textBox_CmdJ1.Text);
+                        manual_controller_.Motors[1].PositionCommand = Convert.ToInt32(textBox_CmdJ2.Text);
+                        manual_controller_.Motors[2].PositionCommand = Convert.ToInt32(textBox_CmdJ3.Text);
+                        manual_controller_.Motors[3].PositionCommand = Convert.ToInt32(textBox_CmdJ4.Text);
+                        manual_controller_.Motors[4].PositionCommand = Convert.ToInt32(textBox_CmdJ5.Text);
+                        
+                    }
+                    else
+                    {
+                        // show command value in textbox
+                        textBox_CmdJ1.Text = manual_controller_.Motors[0].PositionCommand.ToString();
+                        textBox_CmdJ2.Text = manual_controller_.Motors[1].PositionCommand.ToString();
+                        textBox_CmdJ3.Text = manual_controller_.Motors[2].PositionCommand.ToString();
+                        textBox_CmdJ4.Text = manual_controller_.Motors[3].PositionCommand.ToString();
+                        textBox_CmdJ5.Text = manual_controller_.Motors[4].PositionCommand.ToString();
+                    }
+
+                    // show position feedback
                     textBox_FbJ1.Text = manual_controller_.Motors[0].PositionFeedback.ToString();
-
-                    manual_controller_.Motors[1].PositionCommand = Convert.ToInt32(textBox_CmdJ2.Text);
                     textBox_FbJ2.Text = manual_controller_.Motors[1].PositionFeedback.ToString();
-
-                    manual_controller_.Motors[2].PositionCommand = Convert.ToInt32(textBox_CmdJ3.Text);
                     textBox_FbJ3.Text = manual_controller_.Motors[2].PositionFeedback.ToString();
-
-                    manual_controller_.Motors[3].PositionCommand = Convert.ToInt32(textBox_CmdJ4.Text);
                     textBox_FbJ4.Text = manual_controller_.Motors[3].PositionFeedback.ToString();
-
-                    manual_controller_.Motors[4].PositionCommand = Convert.ToInt32(textBox_CmdJ5.Text);
                     textBox_FbJ5.Text = manual_controller_.Motors[4].PositionFeedback.ToString();
-                }
-                else
-                {
 
-                }
+                } else { }
+
+
+                // pose list values
+                label_Pose1.Text = "Pose1 = {" + String.Join(", ", pose1_list_) + "}";
+                label_Pose2.Text = "Pose2 = {" + String.Join(", ", pose2_list_) + "}";
 
             }
 
@@ -320,15 +367,10 @@ namespace poseplayer
         {
             try
             {
-                label_Pose1.Text = "Pose1=";
                 for (int i = 0; i < 5; i++)
                 {
                     pose1_list_[i] = manual_controller_.Motors[i].PositionFeedback;
-                    label_Pose1.Text += pose1_list_[i].ToString() + ", ";
                 }
-
-                
-                
             }
             catch (Exception ex)
             {
@@ -340,18 +382,75 @@ namespace poseplayer
         {
             try
             {
-                label_Pose2.Text = "Pose2=";
                 for (int i = 0; i < 5; i++)
                 {
                     pose2_list_[i] = manual_controller_.Motors[i].PositionFeedback;
-                    label_Pose2.Text += pose2_list_[i].ToString() + ", ";
                 }
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_WriteAllAxis_Click(object sender, EventArgs e)
+        {
+            if (parameter_write_controller_ != null)
+            {
+                int order_stretch = (int)numericUpDown_Stretch.Value;
+                int order_speed = (int)numericUpDown_Speed.Value;
+                int order_curlimit = (int)numericUpDown_CurrentLimit.Value;
+                int order_templimit = (int)numericUpDown_TempLimit.Value;
+
+                foreach (Motor m in parameter_write_controller_.Motors)
+                {
+                    m.Stretch = order_stretch;
+                    m.Speed = order_speed;
+                    m.CurrentLimit = order_curlimit;
+                    m.TempLimit = order_templimit;
+                }
+
+                parameter_write_controller_.RunOnce();   // send command once
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_MovePose1_Click(object sender, EventArgs e)
+        {
+            if (pose_controller_ != null && manual_controller_ != null)
+            {
+                pose_controller_.Move(pose1_list_, get_ui_step_list());
+            }
+            else { }
+        }
+
+        private void button_MovePose2_Click(object sender, EventArgs e)
+        {
+            if (pose_controller_ != null && manual_controller_ != null)
+            {
+                pose_controller_.Move(pose2_list_, get_ui_step_list());
+            }
+            else { }
+        }
+
+        private int[] get_ui_step_list()
+        {
+            int[] ret = {   (int)numericUpDown_MoveStep_J0.Value,
+                            (int)numericUpDown_MoveStep_J1.Value,
+                            (int)numericUpDown_MoveStep_J2.Value,
+                            (int)numericUpDown_MoveStep_J3.Value,
+                            (int)numericUpDown_MoveStep_J4.Value};
+
+            return ret;
         }
     }
 }

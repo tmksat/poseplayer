@@ -65,6 +65,31 @@ namespace poseplayer
             is_thread_enable_ = false;
         }
 
+        public void RunOnce()
+        {
+            try
+            {
+                for (int i = 0; i < kMaxMotorNum; i++)
+                {
+                    byte[] send_command = new byte[256];
+                    int data_length = 0;
+                    data_length = motors_[i].Serialize(send_command);
+                    if (uart_.IsOpen)
+                        uart_.DiscardInBuffer();
+                    uart_.Write(send_command, 0, data_length);
+
+                    Thread.Sleep(5);    // 5ms
+
+                    byte[] read_data = new byte[6];
+                    if (uart_.IsOpen)
+                        uart_.Read(read_data, 0, 6);
+                    int read_id = read_data[3] & 0x1f;
+                    motors_[i].PositionFeedback = (read_data[4] << 7) | read_data[5];
+                }
+            }
+            catch { }
+        }
+
 
 
 
@@ -95,7 +120,6 @@ namespace poseplayer
         {
             while(is_thread_enable_)
             {
-
                 try
                 {
                     for (int i = 0; i < kMaxMotorNum; i++)
@@ -116,10 +140,7 @@ namespace poseplayer
                         motors_[i].PositionFeedback = (read_data[4] << 7) | read_data[5];
                     }
                 }
-                catch
-                {
-                }
-
+                catch { }
                 Thread.Sleep(kProcessPeriodMs);
             }
         }
