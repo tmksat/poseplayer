@@ -26,11 +26,12 @@ namespace poseplayer
         private UdpBridgeController udp_bridge_controller_ = null;
         private object command_value_lock_ = new object();
 
-        //private int[] pose1_list_ = new int[5];
         private int[] pose1_list_ = { 8620, 7686, 10095, 7514, 0 };
-        //private int[] pose2_list_ = new int[5];
         private int[] pose2_list_ = { 8658, 9770, 5603, 7514, 0 };
-        
+        private int[] pose3_list_ = { 8658, 9770, 5603, 7514, 0 };
+        private int[] pose4_list_ = { 8658, 9770, 5603, 7514, 0 };
+        private int[] pose5_list_ = { 8658, 9770, 5603, 7514, 0 };
+
         public Form1()
         {
             InitializeComponent();
@@ -316,8 +317,11 @@ namespace poseplayer
 
 
                 // pose list values
-                label_Pose1.Text = "Pose1 = {" + String.Join(", ", pose1_list_) + "}";
-                label_Pose2.Text = "Pose2 = {" + String.Join(", ", pose2_list_) + "}";
+                label_Pose1.Text = "Pose1={" + String.Join(", ", pose1_list_) + "}";
+                label_Pose2.Text = "Pose2={" + String.Join(", ", pose2_list_) + "}";
+                label_Pose3.Text = "Pose3={" + String.Join(", ", pose3_list_) + "}";
+                label_Pose4.Text = "Pose4={" + String.Join(", ", pose4_list_) + "}";
+                label_Pose5.Text = "Pose5={" + String.Join(", ", pose5_list_) + "}";
 
             }
 
@@ -451,6 +455,78 @@ namespace poseplayer
                             (int)numericUpDown_MoveStep_J4.Value};
 
             return ret;
+        }
+
+        private void button_SetPose3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    pose3_list_[i] = manual_controller_.Motors[i].PositionFeedback;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button_SetPose4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    pose4_list_[i] = manual_controller_.Motors[i].PositionFeedback;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button_SetPose5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    pose5_list_[i] = manual_controller_.Motors[i].PositionFeedback;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button_MovePose3_Click(object sender, EventArgs e)
+        {
+            if (pose_controller_ != null && manual_controller_ != null)
+            {
+                pose_controller_.Move(pose3_list_, get_ui_step_list());
+            }
+            else { }
+        }
+
+        private void button_MovePose4_Click(object sender, EventArgs e)
+        {
+            if (pose_controller_ != null && manual_controller_ != null)
+            {
+                pose_controller_.Move(pose4_list_, get_ui_step_list());
+            }
+            else { }
+        }
+
+        private void button_MovePose5_Click(object sender, EventArgs e)
+        {
+            if (pose_controller_ != null && manual_controller_ != null)
+            {
+                pose_controller_.Move(pose5_list_, get_ui_step_list());
+            }
+            else { }
         }
     }
 }

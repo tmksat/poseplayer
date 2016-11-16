@@ -82,6 +82,15 @@
             this.trackBar_J1 = new System.Windows.Forms.TrackBar();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox_Pose = new System.Windows.Forms.GroupBox();
+            this.button_MovePose5 = new System.Windows.Forms.Button();
+            this.button_MovePose4 = new System.Windows.Forms.Button();
+            this.button_MovePose3 = new System.Windows.Forms.Button();
+            this.label_Pose5 = new System.Windows.Forms.Label();
+            this.button_SetPose5 = new System.Windows.Forms.Button();
+            this.label_Pose4 = new System.Windows.Forms.Label();
+            this.button_SetPose4 = new System.Windows.Forms.Button();
+            this.label_Pose3 = new System.Windows.Forms.Label();
+            this.button_SetPose3 = new System.Windows.Forms.Button();
             this.numericUpDown_MoveStep_J4 = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.numericUpDown_MoveStep_J3 = new System.Windows.Forms.NumericUpDown();
@@ -111,15 +120,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.serialPort_Motor = new System.IO.Ports.SerialPort(this.components);
             this.timer_ViewUpdate = new System.Windows.Forms.Timer(this.components);
-            this.label_Pose3 = new System.Windows.Forms.Label();
-            this.button_SetPose3 = new System.Windows.Forms.Button();
-            this.label_Pose4 = new System.Windows.Forms.Label();
-            this.button_SetPose4 = new System.Windows.Forms.Button();
-            this.label_Pose5 = new System.Windows.Forms.Label();
-            this.button_SetPose5 = new System.Windows.Forms.Button();
-            this.button_MovePose3 = new System.Windows.Forms.Button();
-            this.button_MovePose4 = new System.Windows.Forms.Button();
-            this.button_MovePose5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox_Control.SuspendLayout();
             this.groupBox_ComPort.SuspendLayout();
@@ -689,6 +689,93 @@
             this.groupBox_Pose.TabStop = false;
             this.groupBox_Pose.Text = "Pose";
             // 
+            // button_MovePose5
+            // 
+            this.button_MovePose5.Location = new System.Drawing.Point(96, 206);
+            this.button_MovePose5.Name = "button_MovePose5";
+            this.button_MovePose5.Size = new System.Drawing.Size(75, 23);
+            this.button_MovePose5.TabIndex = 26;
+            this.button_MovePose5.Text = "MovePose5";
+            this.button_MovePose5.UseVisualStyleBackColor = true;
+            this.button_MovePose5.Click += new System.EventHandler(this.button_MovePose5_Click);
+            // 
+            // button_MovePose4
+            // 
+            this.button_MovePose4.Location = new System.Drawing.Point(15, 206);
+            this.button_MovePose4.Name = "button_MovePose4";
+            this.button_MovePose4.Size = new System.Drawing.Size(75, 23);
+            this.button_MovePose4.TabIndex = 25;
+            this.button_MovePose4.Text = "MovePose4";
+            this.button_MovePose4.UseVisualStyleBackColor = true;
+            this.button_MovePose4.Click += new System.EventHandler(this.button_MovePose4_Click);
+            // 
+            // button_MovePose3
+            // 
+            this.button_MovePose3.Location = new System.Drawing.Point(177, 177);
+            this.button_MovePose3.Name = "button_MovePose3";
+            this.button_MovePose3.Size = new System.Drawing.Size(75, 23);
+            this.button_MovePose3.TabIndex = 24;
+            this.button_MovePose3.Text = "MovePose3";
+            this.button_MovePose3.UseVisualStyleBackColor = true;
+            this.button_MovePose3.Click += new System.EventHandler(this.button_MovePose3_Click);
+            // 
+            // label_Pose5
+            // 
+            this.label_Pose5.AutoSize = true;
+            this.label_Pose5.Location = new System.Drawing.Point(91, 144);
+            this.label_Pose5.Name = "label_Pose5";
+            this.label_Pose5.Size = new System.Drawing.Size(42, 12);
+            this.label_Pose5.TabIndex = 23;
+            this.label_Pose5.Text = "Pose5=";
+            // 
+            // button_SetPose5
+            // 
+            this.button_SetPose5.Location = new System.Drawing.Point(15, 139);
+            this.button_SetPose5.Name = "button_SetPose5";
+            this.button_SetPose5.Size = new System.Drawing.Size(75, 23);
+            this.button_SetPose5.TabIndex = 22;
+            this.button_SetPose5.Text = "SetPose5";
+            this.button_SetPose5.UseVisualStyleBackColor = true;
+            this.button_SetPose5.Click += new System.EventHandler(this.button_SetPose5_Click);
+            // 
+            // label_Pose4
+            // 
+            this.label_Pose4.AutoSize = true;
+            this.label_Pose4.Location = new System.Drawing.Point(91, 113);
+            this.label_Pose4.Name = "label_Pose4";
+            this.label_Pose4.Size = new System.Drawing.Size(42, 12);
+            this.label_Pose4.TabIndex = 21;
+            this.label_Pose4.Text = "Pose4=";
+            // 
+            // button_SetPose4
+            // 
+            this.button_SetPose4.Location = new System.Drawing.Point(15, 108);
+            this.button_SetPose4.Name = "button_SetPose4";
+            this.button_SetPose4.Size = new System.Drawing.Size(75, 23);
+            this.button_SetPose4.TabIndex = 20;
+            this.button_SetPose4.Text = "SetPose4";
+            this.button_SetPose4.UseVisualStyleBackColor = true;
+            this.button_SetPose4.Click += new System.EventHandler(this.button_SetPose4_Click);
+            // 
+            // label_Pose3
+            // 
+            this.label_Pose3.AutoSize = true;
+            this.label_Pose3.Location = new System.Drawing.Point(91, 84);
+            this.label_Pose3.Name = "label_Pose3";
+            this.label_Pose3.Size = new System.Drawing.Size(42, 12);
+            this.label_Pose3.TabIndex = 19;
+            this.label_Pose3.Text = "Pose3=";
+            // 
+            // button_SetPose3
+            // 
+            this.button_SetPose3.Location = new System.Drawing.Point(15, 79);
+            this.button_SetPose3.Name = "button_SetPose3";
+            this.button_SetPose3.Size = new System.Drawing.Size(75, 23);
+            this.button_SetPose3.TabIndex = 18;
+            this.button_SetPose3.Text = "SetPose3";
+            this.button_SetPose3.UseVisualStyleBackColor = true;
+            this.button_SetPose3.Click += new System.EventHandler(this.button_SetPose3_Click);
+            // 
             // numericUpDown_MoveStep_J4
             // 
             this.numericUpDown_MoveStep_J4.Location = new System.Drawing.Point(107, 343);
@@ -895,7 +982,7 @@
             this.numericUpDown_Stretch.Size = new System.Drawing.Size(75, 19);
             this.numericUpDown_Stretch.TabIndex = 43;
             this.numericUpDown_Stretch.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -1017,87 +1104,6 @@
             // timer_ViewUpdate
             // 
             this.timer_ViewUpdate.Tick += new System.EventHandler(this.timer_ViewUpdate_Tick);
-            // 
-            // label_Pose3
-            // 
-            this.label_Pose3.AutoSize = true;
-            this.label_Pose3.Location = new System.Drawing.Point(91, 84);
-            this.label_Pose3.Name = "label_Pose3";
-            this.label_Pose3.Size = new System.Drawing.Size(42, 12);
-            this.label_Pose3.TabIndex = 19;
-            this.label_Pose3.Text = "Pose3=";
-            // 
-            // button_SetPose3
-            // 
-            this.button_SetPose3.Location = new System.Drawing.Point(15, 79);
-            this.button_SetPose3.Name = "button_SetPose3";
-            this.button_SetPose3.Size = new System.Drawing.Size(75, 23);
-            this.button_SetPose3.TabIndex = 18;
-            this.button_SetPose3.Text = "SetPose3";
-            this.button_SetPose3.UseVisualStyleBackColor = true;
-            // 
-            // label_Pose4
-            // 
-            this.label_Pose4.AutoSize = true;
-            this.label_Pose4.Location = new System.Drawing.Point(91, 113);
-            this.label_Pose4.Name = "label_Pose4";
-            this.label_Pose4.Size = new System.Drawing.Size(42, 12);
-            this.label_Pose4.TabIndex = 21;
-            this.label_Pose4.Text = "Pose4=";
-            // 
-            // button_SetPose4
-            // 
-            this.button_SetPose4.Location = new System.Drawing.Point(15, 108);
-            this.button_SetPose4.Name = "button_SetPose4";
-            this.button_SetPose4.Size = new System.Drawing.Size(75, 23);
-            this.button_SetPose4.TabIndex = 20;
-            this.button_SetPose4.Text = "SetPose4";
-            this.button_SetPose4.UseVisualStyleBackColor = true;
-            // 
-            // label_Pose5
-            // 
-            this.label_Pose5.AutoSize = true;
-            this.label_Pose5.Location = new System.Drawing.Point(91, 144);
-            this.label_Pose5.Name = "label_Pose5";
-            this.label_Pose5.Size = new System.Drawing.Size(42, 12);
-            this.label_Pose5.TabIndex = 23;
-            this.label_Pose5.Text = "Pose5=";
-            // 
-            // button_SetPose5
-            // 
-            this.button_SetPose5.Location = new System.Drawing.Point(15, 139);
-            this.button_SetPose5.Name = "button_SetPose5";
-            this.button_SetPose5.Size = new System.Drawing.Size(75, 23);
-            this.button_SetPose5.TabIndex = 22;
-            this.button_SetPose5.Text = "SetPose5";
-            this.button_SetPose5.UseVisualStyleBackColor = true;
-            // 
-            // button_MovePose3
-            // 
-            this.button_MovePose3.Location = new System.Drawing.Point(177, 177);
-            this.button_MovePose3.Name = "button_MovePose3";
-            this.button_MovePose3.Size = new System.Drawing.Size(75, 23);
-            this.button_MovePose3.TabIndex = 24;
-            this.button_MovePose3.Text = "MovePose3";
-            this.button_MovePose3.UseVisualStyleBackColor = true;
-            // 
-            // button_MovePose4
-            // 
-            this.button_MovePose4.Location = new System.Drawing.Point(15, 206);
-            this.button_MovePose4.Name = "button_MovePose4";
-            this.button_MovePose4.Size = new System.Drawing.Size(75, 23);
-            this.button_MovePose4.TabIndex = 25;
-            this.button_MovePose4.Text = "MovePose4";
-            this.button_MovePose4.UseVisualStyleBackColor = true;
-            // 
-            // button_MovePose5
-            // 
-            this.button_MovePose5.Location = new System.Drawing.Point(96, 206);
-            this.button_MovePose5.Name = "button_MovePose5";
-            this.button_MovePose5.Size = new System.Drawing.Size(75, 23);
-            this.button_MovePose5.TabIndex = 26;
-            this.button_MovePose5.Text = "MovePose5";
-            this.button_MovePose5.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
