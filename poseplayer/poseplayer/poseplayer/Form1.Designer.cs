@@ -992,7 +992,7 @@
             this.numericUpDown_Stretch.Size = new System.Drawing.Size(75, 19);
             this.numericUpDown_Stretch.TabIndex = 43;
             this.numericUpDown_Stretch.Value = new decimal(new int[] {
-            40,
+            20,
             0,
             0,
             0});
@@ -1163,7 +1163,7 @@
             this.numericUpDown_IntervalMs.Size = new System.Drawing.Size(78, 19);
             this.numericUpDown_IntervalMs.TabIndex = 1;
             this.numericUpDown_IntervalMs.Value = new decimal(new int[] {
-            10000,
+            5000,
             0,
             0,
             0});
