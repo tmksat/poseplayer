@@ -74,8 +74,8 @@ namespace poseplayer
 
         public override void Kill()
         {
-            base.Kill();
             is_thread_enable_ = false;
+            base.Kill();
         }
 
         // ----- protected -----
