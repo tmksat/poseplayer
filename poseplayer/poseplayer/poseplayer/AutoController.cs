@@ -12,6 +12,12 @@ namespace poseplayer
     {
         // ----- public -----
         /* typedef, enum */
+        public enum EAutoMode
+        {
+             RepeatMode,
+             RandomMode,
+             StopMode,
+        }
         public struct JointLimit
         {
             public int upper;
@@ -53,6 +59,14 @@ namespace poseplayer
         public int IntervalMs { set { interval_ms_ = value; } get { return interval_ms_; } }
         public int[] PoseList { get { return new_pose_; } }
         public int[] StepList { get { return new_step_; } }
+        //
+        public int[] PresetPoseList1 { set { preset_pose1_ = value; } get { return preset_pose1_; } }
+        public int[] PresetPoseList2 { set { preset_pose2_ = value; } get { return preset_pose2_; } }
+        public int[] PresetStepList { set { preset_step_ = value; } get { return preset_step_; } }
+        public int TargetRepeatCount { set { repeat_count_target_ = value; } get { return repeat_count_target_; } }
+        public int NowCount { get { return repeat_count_; } }
+        //
+        public EAutoMode Mode { set { mode_ = value; } get { return mode_; } }
 
         // ----- protected -----
         /* typedef, enum */
@@ -65,7 +79,7 @@ namespace poseplayer
         // ----- private -----
         /* typedef, enum */
         /* const */
-        private const int kJointNum = 4;
+        private const int kJointNum = 5;
         private const int kDefaultIntervalMs = 10000;   // 10000ms = 10s
         private const int kStepMax = 40;
         /* constructor */
@@ -79,7 +93,12 @@ namespace poseplayer
         private int[] step_limit_ = { 10, 30 };
         private int[] new_pose_ = new int[kJointNum];
         private int[] new_step_ = new int[kJointNum];
-
+        private EAutoMode mode_ = EAutoMode.RepeatMode;   // default
+        private int[] preset_pose1_ = new int[kJointNum];
+        private int[] preset_pose2_ = new int[kJointNum];
+        private int[] preset_step_ = new int[kJointNum];
+        private int repeat_count_target_ = 0;
+        private int repeat_count_ = 0;
 
         /* method, static method */
         private void main_proc()
@@ -88,19 +107,48 @@ namespace poseplayer
             {
                 try
                 {
-                    for (int i=0; i<kJointNum; i++)
+                    if (mode_ == EAutoMode.RandomMode)
                     {
-                        new_pose_[i] = rand_.Next(joint_limit_[i].lower, joint_limit_[i].upper);
-                        new_step_[i] = rand_.Next(step_limit_[0], step_limit_[1]);
+                        // 
+                        for (int i = 0; i < kJointNum; i++)
+                        {
+                            new_pose_[i] = rand_.Next(joint_limit_[i].lower, joint_limit_[i].upper);
+                            new_step_[i] = rand_.Next(step_limit_[0], step_limit_[1]);
+                        }
+                        pose_controller_.Move(new_pose_, new_step_);
+                        Thread.Sleep(rand_.Next(200, interval_ms_));
                     }
-                    pose_controller_.Move(new_pose_, new_step_);
+                    else if (mode_ == EAutoMode.RepeatMode)
+                    {
+                        if ( (repeat_count_ % 2) == 0)
+                        {
+                            new_pose_ = preset_pose1_;
+                        }
+                        else
+                        {
+                            new_pose_ = preset_pose2_;
+                        }
+                        new_step_ = preset_step_;
+                        pose_controller_.Move(new_pose_, new_step_);
+                        Thread.Sleep(interval_ms_);
+                        repeat_count_++;
+
+                        if (repeat_count_ >= repeat_count_target_)
+                        {
+                            mode_ = EAutoMode.StopMode;
+                        }
+
+                    }
+                    else if (mode_ == EAutoMode.StopMode)
+                    {
+                        // stop mode is sleep...
+                        Thread.Sleep(1000);
+                    }
                     
                 }
                 catch
                 {
                 }
-                //Thread.Sleep(interval_ms_);
-                Thread.Sleep(rand_.Next(200, interval_ms_));
             }
         }
 

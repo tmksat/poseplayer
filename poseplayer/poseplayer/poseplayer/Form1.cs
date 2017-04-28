@@ -333,6 +333,7 @@ namespace poseplayer
                 {
                     label_AutoPoseList.Text = "PoseList={" + String.Join(", ", auto_c_.PoseList) + "}";
                     label_AutoStepList.Text = "StepList={" + String.Join(", ", auto_c_.StepList) + "}";
+                    label_CurrentCounts.Text = "CurCounts= " + auto_c_.NowCount.ToString();
                 }
 
             }
@@ -464,7 +465,8 @@ namespace poseplayer
                             (int)numericUpDown_MoveStep_J1.Value,
                             (int)numericUpDown_MoveStep_J2.Value,
                             (int)numericUpDown_MoveStep_J3.Value,
-                            (int)numericUpDown_MoveStep_J4.Value};
+                            (int)numericUpDown_MoveStep_J4.Value,
+                        };
 
             return ret;
         }
@@ -559,10 +561,24 @@ namespace poseplayer
                     //auto_c_.SetJointLimit(2, 9999, 5183);
                     //auto_c_.SetJointLimit(3, 8193, 6840);
                     //
-                    auto_c_.SetJointLimit(0, 9888, 7888);
-                    auto_c_.SetJointLimit(1, 8764, 7533);
-                    auto_c_.SetJointLimit(2, 8000, 7000);
-                    auto_c_.SetJointLimit(3, 8193, 6840);
+                    //auto_c_.SetJointLimit(0, 9888, 7888);
+                    //auto_c_.SetJointLimit(1, 8764, 7533);
+                    //auto_c_.SetJointLimit(2, 8000, 7000);
+                    //auto_c_.SetJointLimit(3, 8193, 6840);
+                    //
+
+
+                    // repeat motion test
+                    auto_c_.Mode = AutoController.EAutoMode.RepeatMode;
+                    auto_c_.PresetPoseList1 = pose1_list_;
+                    auto_c_.PresetPoseList2 = pose2_list_;
+                    auto_c_.PresetStepList = get_ui_step_list();
+                    auto_c_.TargetRepeatCount = (int)numericUpDown_TargetCounts.Value;
+                    auto_c_.SetJointLimit(0, 10500, 3500);
+                    auto_c_.SetJointLimit(1, 10500, 3500);
+                    auto_c_.SetJointLimit(2, 10500, 3500);
+                    auto_c_.SetJointLimit(3, 10500, 3500);
+
                     auto_c_.IntervalMs = (int)numericUpDown_IntervalMs.Value;
                     auto_c_.Start();
                     is_auto = true;
@@ -574,6 +590,11 @@ namespace poseplayer
                 auto_c_ = null;
                 is_auto = false;
             }
+        }
+
+        private void groupBox_Auto_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

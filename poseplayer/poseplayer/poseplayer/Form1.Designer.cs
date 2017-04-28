@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vIewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,12 +122,14 @@
             this.serialPort_Motor = new System.IO.Ports.SerialPort(this.components);
             this.timer_ViewUpdate = new System.Windows.Forms.Timer(this.components);
             this.groupBox_Auto = new System.Windows.Forms.GroupBox();
-            this.button_Auto = new System.Windows.Forms.Button();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.numericUpDown_IntervalMs = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label_AutoPoseList = new System.Windows.Forms.Label();
             this.label_AutoStepList = new System.Windows.Forms.Label();
+            this.label_AutoPoseList = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.numericUpDown_IntervalMs = new System.Windows.Forms.NumericUpDown();
+            this.button_Auto = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.numericUpDown_TargetCounts = new System.Windows.Forms.NumericUpDown();
+            this.label_CurrentCounts = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox_Control.SuspendLayout();
             this.groupBox_ComPort.SuspendLayout();
@@ -150,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Speed)).BeginInit();
             this.groupBox_Auto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IntervalMs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TargetCounts)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -177,10 +181,17 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -213,8 +224,8 @@
             // posePlayerTomokiSatoToolStripMenuItem
             // 
             this.posePlayerTomokiSatoToolStripMenuItem.Name = "posePlayerTomokiSatoToolStripMenuItem";
-            this.posePlayerTomokiSatoToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.posePlayerTomokiSatoToolStripMenuItem.Text = "PosePlayer 1.1.0 by tomoki sato";
+            this.posePlayerTomokiSatoToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
+            this.posePlayerTomokiSatoToolStripMenuItem.Text = "PosePlayer 1.2.0 coded-by-tomoki_sato";
             this.posePlayerTomokiSatoToolStripMenuItem.Click += new System.EventHandler(this.posePlayerTomokiSatoToolStripMenuItem_Click);
             // 
             // groupBox_Control
@@ -789,6 +800,11 @@
             // numericUpDown_MoveStep_J4
             // 
             this.numericUpDown_MoveStep_J4.Location = new System.Drawing.Point(107, 343);
+            this.numericUpDown_MoveStep_J4.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDown_MoveStep_J4.Name = "numericUpDown_MoveStep_J4";
             this.numericUpDown_MoveStep_J4.Size = new System.Drawing.Size(66, 19);
             this.numericUpDown_MoveStep_J4.TabIndex = 17;
@@ -810,6 +826,11 @@
             // numericUpDown_MoveStep_J3
             // 
             this.numericUpDown_MoveStep_J3.Location = new System.Drawing.Point(107, 318);
+            this.numericUpDown_MoveStep_J3.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDown_MoveStep_J3.Name = "numericUpDown_MoveStep_J3";
             this.numericUpDown_MoveStep_J3.Size = new System.Drawing.Size(66, 19);
             this.numericUpDown_MoveStep_J3.TabIndex = 15;
@@ -831,6 +852,11 @@
             // numericUpDown_MoveStep_J2
             // 
             this.numericUpDown_MoveStep_J2.Location = new System.Drawing.Point(107, 293);
+            this.numericUpDown_MoveStep_J2.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDown_MoveStep_J2.Name = "numericUpDown_MoveStep_J2";
             this.numericUpDown_MoveStep_J2.Size = new System.Drawing.Size(66, 19);
             this.numericUpDown_MoveStep_J2.TabIndex = 13;
@@ -852,6 +878,11 @@
             // numericUpDown_MoveStep_J1
             // 
             this.numericUpDown_MoveStep_J1.Location = new System.Drawing.Point(107, 268);
+            this.numericUpDown_MoveStep_J1.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDown_MoveStep_J1.Name = "numericUpDown_MoveStep_J1";
             this.numericUpDown_MoveStep_J1.Size = new System.Drawing.Size(66, 19);
             this.numericUpDown_MoveStep_J1.TabIndex = 11;
@@ -873,6 +904,11 @@
             // numericUpDown_MoveStep_J0
             // 
             this.numericUpDown_MoveStep_J0.Location = new System.Drawing.Point(107, 243);
+            this.numericUpDown_MoveStep_J0.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericUpDown_MoveStep_J0.Name = "numericUpDown_MoveStep_J0";
             this.numericUpDown_MoveStep_J0.Size = new System.Drawing.Size(66, 19);
             this.numericUpDown_MoveStep_J0.TabIndex = 9;
@@ -1117,6 +1153,9 @@
             // 
             // groupBox_Auto
             // 
+            this.groupBox_Auto.Controls.Add(this.label_CurrentCounts);
+            this.groupBox_Auto.Controls.Add(this.label17);
+            this.groupBox_Auto.Controls.Add(this.numericUpDown_TargetCounts);
             this.groupBox_Auto.Controls.Add(this.label_AutoStepList);
             this.groupBox_Auto.Controls.Add(this.label_AutoPoseList);
             this.groupBox_Auto.Controls.Add(this.label16);
@@ -1127,46 +1166,26 @@
             this.groupBox_Auto.Size = new System.Drawing.Size(263, 153);
             this.groupBox_Auto.TabIndex = 9;
             this.groupBox_Auto.TabStop = false;
-            this.groupBox_Auto.Text = "Auto";
+            this.groupBox_Auto.Text = "Auto(RepeatMode)";
+            this.groupBox_Auto.Enter += new System.EventHandler(this.groupBox_Auto_Enter);
             // 
-            // button_Auto
+            // label_AutoStepList
             // 
-            this.button_Auto.Location = new System.Drawing.Point(170, 26);
-            this.button_Auto.Name = "button_Auto";
-            this.button_Auto.Size = new System.Drawing.Size(84, 23);
-            this.button_Auto.TabIndex = 0;
-            this.button_Auto.Text = "Auto";
-            this.button_Auto.UseVisualStyleBackColor = true;
-            this.button_Auto.Click += new System.EventHandler(this.button_Auto_Click);
+            this.label_AutoStepList.AutoSize = true;
+            this.label_AutoStepList.Location = new System.Drawing.Point(12, 106);
+            this.label_AutoStepList.Name = "label_AutoStepList";
+            this.label_AutoStepList.Size = new System.Drawing.Size(53, 12);
+            this.label_AutoStepList.TabIndex = 4;
+            this.label_AutoStepList.Text = "StepList=";
             // 
-            // openToolStripMenuItem
+            // label_AutoPoseList
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // numericUpDown_IntervalMs
-            // 
-            this.numericUpDown_IntervalMs.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown_IntervalMs.Location = new System.Drawing.Point(76, 29);
-            this.numericUpDown_IntervalMs.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown_IntervalMs.Name = "numericUpDown_IntervalMs";
-            this.numericUpDown_IntervalMs.Size = new System.Drawing.Size(78, 19);
-            this.numericUpDown_IntervalMs.TabIndex = 1;
-            this.numericUpDown_IntervalMs.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
+            this.label_AutoPoseList.AutoSize = true;
+            this.label_AutoPoseList.Location = new System.Drawing.Point(11, 86);
+            this.label_AutoPoseList.Name = "label_AutoPoseList";
+            this.label_AutoPoseList.Size = new System.Drawing.Size(88, 12);
+            this.label_AutoPoseList.TabIndex = 3;
+            this.label_AutoPoseList.Text = "TargetPoseList=";
             // 
             // label16
             // 
@@ -1177,23 +1196,77 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "IntervalMs";
             // 
-            // label_AutoPoseList
+            // numericUpDown_IntervalMs
             // 
-            this.label_AutoPoseList.AutoSize = true;
-            this.label_AutoPoseList.Location = new System.Drawing.Point(14, 82);
-            this.label_AutoPoseList.Name = "label_AutoPoseList";
-            this.label_AutoPoseList.Size = new System.Drawing.Size(55, 12);
-            this.label_AutoPoseList.TabIndex = 3;
-            this.label_AutoPoseList.Text = "PoseList=";
+            this.numericUpDown_IntervalMs.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown_IntervalMs.Location = new System.Drawing.Point(97, 29);
+            this.numericUpDown_IntervalMs.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_IntervalMs.Name = "numericUpDown_IntervalMs";
+            this.numericUpDown_IntervalMs.Size = new System.Drawing.Size(99, 19);
+            this.numericUpDown_IntervalMs.TabIndex = 1;
+            this.numericUpDown_IntervalMs.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
             // 
-            // label_AutoStepList
+            // button_Auto
             // 
-            this.label_AutoStepList.AutoSize = true;
-            this.label_AutoStepList.Location = new System.Drawing.Point(14, 115);
-            this.label_AutoStepList.Name = "label_AutoStepList";
-            this.label_AutoStepList.Size = new System.Drawing.Size(53, 12);
-            this.label_AutoStepList.TabIndex = 4;
-            this.label_AutoStepList.Text = "StepList=";
+            this.button_Auto.Location = new System.Drawing.Point(202, 26);
+            this.button_Auto.Name = "button_Auto";
+            this.button_Auto.Size = new System.Drawing.Size(55, 50);
+            this.button_Auto.TabIndex = 0;
+            this.button_Auto.Text = "Auto";
+            this.button_Auto.UseVisualStyleBackColor = true;
+            this.button_Auto.Click += new System.EventHandler(this.button_Auto_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 61);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 12);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "TargetCounts";
+            // 
+            // numericUpDown_TargetCounts
+            // 
+            this.numericUpDown_TargetCounts.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown_TargetCounts.Location = new System.Drawing.Point(97, 55);
+            this.numericUpDown_TargetCounts.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_TargetCounts.Name = "numericUpDown_TargetCounts";
+            this.numericUpDown_TargetCounts.Size = new System.Drawing.Size(99, 19);
+            this.numericUpDown_TargetCounts.TabIndex = 5;
+            this.numericUpDown_TargetCounts.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            // 
+            // label_CurrentCounts
+            // 
+            this.label_CurrentCounts.AutoSize = true;
+            this.label_CurrentCounts.Location = new System.Drawing.Point(12, 129);
+            this.label_CurrentCounts.Name = "label_CurrentCounts";
+            this.label_CurrentCounts.Size = new System.Drawing.Size(65, 12);
+            this.label_CurrentCounts.TabIndex = 7;
+            this.label_CurrentCounts.Text = "CurCounts=";
             // 
             // Form1
             // 
@@ -1243,6 +1316,7 @@
             this.groupBox_Auto.ResumeLayout(false);
             this.groupBox_Auto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IntervalMs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TargetCounts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1348,6 +1422,9 @@
         private System.Windows.Forms.Label label_AutoPoseList;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.NumericUpDown numericUpDown_IntervalMs;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown numericUpDown_TargetCounts;
+        private System.Windows.Forms.Label label_CurrentCounts;
     }
 }
 
