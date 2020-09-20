@@ -20,6 +20,7 @@ namespace poseplayer
         
         private ManualController manual_controller_ = null;
         private PoseController pose_controller_ = null;
+        private AutoController auto_c_ = null;
         //
         private ParameterWriteController parameter_write_controller_ = null;
         //
@@ -31,6 +32,10 @@ namespace poseplayer
         private int[] pose3_list_ = { 8658, 9770, 5603, 7514, 0 };
         private int[] pose4_list_ = { 8658, 9770, 5603, 7514, 0 };
         private int[] pose5_list_ = { 8658, 9770, 5603, 7514, 0 };
+
+
+        // for auto-mode
+        private bool is_auto = false;
 
         public Form1()
         {
@@ -323,6 +328,14 @@ namespace poseplayer
                 label_Pose4.Text = "Pose4={" + String.Join(", ", pose4_list_) + "}";
                 label_Pose5.Text = "Pose5={" + String.Join(", ", pose5_list_) + "}";
 
+                // auto mode
+                if(auto_c_ != null)
+                {
+                    label_AutoPoseList.Text = "PoseList={" + String.Join(", ", auto_c_.PoseList) + "}";
+                    label_AutoStepList.Text = "StepList={" + String.Join(", ", auto_c_.StepList) + "}";
+                    label_CurrentCounts.Text = "CurCounts= " + auto_c_.NowCount.ToString();
+                }
+
             }
 
         }
@@ -452,7 +465,8 @@ namespace poseplayer
                             (int)numericUpDown_MoveStep_J1.Value,
                             (int)numericUpDown_MoveStep_J2.Value,
                             (int)numericUpDown_MoveStep_J3.Value,
-                            (int)numericUpDown_MoveStep_J4.Value};
+                            (int)numericUpDown_MoveStep_J4.Value,
+                        };
 
             return ret;
         }
@@ -527,6 +541,60 @@ namespace poseplayer
                 pose_controller_.Move(pose5_list_, get_ui_step_list());
             }
             else { }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Auto_Click(object sender, EventArgs e)
+        {
+            if (!is_auto)
+            {
+                if (pose_controller_ != null && manual_controller_ != null)
+                {
+                    auto_c_ = new AutoController(pose_controller_);
+                    // set joint limit
+                    //auto_c_.SetJointLimit(0, 11567, 6205);
+                    //auto_c_.SetJointLimit(1, 8764, 7533);
+                    //auto_c_.SetJointLimit(2, 9999, 5183);
+                    //auto_c_.SetJointLimit(3, 8193, 6840);
+                    //
+                    //auto_c_.SetJointLimit(0, 9888, 7888);
+                    //auto_c_.SetJointLimit(1, 8764, 7533);
+                    //auto_c_.SetJointLimit(2, 8000, 7000);
+                    //auto_c_.SetJointLimit(3, 8193, 6840);
+                    //
+
+
+                    // repeat motion test
+                    auto_c_.Mode = AutoController.EAutoMode.RepeatMode;
+                    auto_c_.PresetPoseList1 = pose1_list_;
+                    auto_c_.PresetPoseList2 = pose2_list_;
+                    auto_c_.PresetStepList = get_ui_step_list();
+                    auto_c_.TargetRepeatCount = (int)numericUpDown_TargetCounts.Value;
+                    auto_c_.SetJointLimit(0, 10500, 3500);
+                    auto_c_.SetJointLimit(1, 10500, 3500);
+                    auto_c_.SetJointLimit(2, 10500, 3500);
+                    auto_c_.SetJointLimit(3, 10500, 3500);
+
+                    auto_c_.IntervalMs = (int)numericUpDown_IntervalMs.Value;
+                    auto_c_.Start();
+                    is_auto = true;
+                }
+            }
+            else
+            {
+                auto_c_.Kill();
+                auto_c_ = null;
+                is_auto = false;
+            }
+        }
+
+        private void groupBox_Auto_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
